@@ -1,0 +1,8 @@
+<ul>
+  Result for <strong><%= params[:race] %></strong> <strong><%= params[:age] %></strong>-year old <strong><%= params[:gender] %></strong>, <strong><%= params[:height_feet] %></strong>feet, <strong><%= params[:weight_lb] %></strong>lb:
+</ul>
+
+<ul>
+  <strong>BMI is</strong> <%= @bmi.to_f%>
+</ul>
+

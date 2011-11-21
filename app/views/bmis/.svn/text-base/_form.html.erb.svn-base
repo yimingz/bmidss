@@ -1,0 +1,49 @@
+<%= form_for(@bmi) do |f| %>
+  <% if @bmi.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bmi.errors.count, "error") %> prohibited this bmi from being saved:</h2>
+
+      <ul>
+      <% @bmi.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :age %><br />
+    <%= f.number_field :age %>
+  </div>
+  <div class="field">
+    <%= f.label :race %><br />
+    <%= f.select(:race, Bmi::RACE_LIST) %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br />
+    <%= f.select(:gender, Bmi::GENDER_LIST) %>
+  </div>
+  <div class="field">
+    <%= f.label :weight_lb %><br />
+    <%= f.number_field :weight_lb %>
+  </div>
+  <div class="field">
+    <%= f.label :weight_kg %><br />
+    <%= f.number_field :weight_kg %>
+  </div>
+  <div class="field">
+    <%= f.label :height_inch %><br />
+    <%= f.select(:gender, Bmi::INCH_LIST) %>
+  </div>
+  <div class="field">
+    <%= f.label :height_feet %><br />
+    <%= f.select(:gender, Bmi::FEET_LIST) %>
+  </div>
+  <div class="field">
+    <%= f.label :height_cm %><br />
+    <%= f.number_field :height_cm %>
+  </div>
+  <div class="actions">
+    <%= f.submit(:calculate) %>
+  </div>
+<% end %>

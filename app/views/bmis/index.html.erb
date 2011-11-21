@@ -1,0 +1,123 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+  <head>
+
+  </head>
+
+  <body>
+    <form>
+
+      <script type="text/javascript">
+        function showhide1(sh){
+        if(sh) {
+        disp="inline";
+        zi=1;
+        }else{
+        disp="none";
+        zi=-10;
+        }
+
+        for (i=0; i<document.getElementsByTagName("*").length; i++) {
+        if (document.getElementsByTagName("*").item(i).className == "divclass1")
+        {
+        document.getElementsByTagName("*").item(i).style.display=disp;
+        document.getElementsByTagName("*").item(i).style.zIndex=zi;
+        }
+        }
+        }
+    </script>
+    <script type="text/javascript">
+      function showhide2(sh){
+
+      if(sh) {
+      disp="inline";
+      zi=1;
+      }else{
+      disp="none";
+      zi=-10;
+      }
+
+      for (i=0; i<document.getElementsByTagName("*").length; i++) {
+      if (document.getElementsByTagName("*").item(i).className == "divclass2")
+      {
+      document.getElementsByTagName("*").item(i).style.display=disp;
+      document.getElementsByTagName("*").item(i).style.zIndex=zi;
+      }
+      }
+      
+      }
+      </script>
+      </br>
+      </br>
+      Select Units:
+          <input type="radio" name="type" value="Metric" checked="checked" onclick="showhide1(1); showhide2(0);"/>
+            Metric
+          <input type="radio" name="type" value="Standard" onclick="showhide1(0); showhide2(1);"/>
+            US standards</br>
+         </br>
+            <div class="divclass1">
+               <%= form_tag('/calculate') do %>
+                  <ul>
+                  <%= label_tag :gender %>
+                  <%= select_tag(:gender,
+                  options_for_select(Bmi::GENDER_LIST)) %>
+                  </ul>
+                  <ul>
+                  <%= label_tag :race %>
+                  <%= select_tag(:race,
+                  options_for_select(Bmi::RACE_LIST)) %>
+                  </ul>
+                  <ul>
+                  <%= label_tag :age %>
+                  <%= number_field_tag(:age) %>
+                  </ul>
+                  <ul>
+                  <%= label_tag :weight_kg %>
+                  <%= number_field_tag(:weight_kg) %>
+                  </ul>
+                  <ul>
+                  <%= label_tag :height_cm %>
+                  <%= number_field_tag(:height_cm) + "cm"%>
+                  </ul>
+                  <ul>
+                    <%= submit_tag("Calculate") %>
+                  </ul>
+                  <% end %>
+            </div>
+            
+            <div class="divclass2">
+              
+                  <%= form_tag('/calculate') do %>
+
+                  <ul>
+                  <%= label_tag :gender %>
+                  <%= select_tag(:gender,
+                  options_for_select(Bmi::GENDER_LIST)) %>
+                  </ul>
+                  <ul>
+                  <%= label_tag :race %>
+                  <%= select_tag(:race,
+                  options_for_select(Bmi::RACE_LIST)) %>
+                  </ul>
+                  <ul>
+                  <%= label_tag :age %>
+                  <%= number_field_tag(:age) %>
+                  </ul>
+                  <ul>
+                  <%= label_tag :weight_lb %>
+                  <%= number_field_tag(:weight_lb) %>
+                  </ul>
+                  <ul>
+                  <%= label_tag :height %>
+                  <%= select_tag(:height_feet, options_for_select(Bmi::FEET_LIST)) + "feet" + select_tag(:height_inch, options_for_select(Bmi::INCH_LIST)) +  "inch"%>
+                  </ul>
+                  <ul>
+                    <%= submit_tag("Calculate") %>
+                  </ul>
+                  <% end %>
+            </div>
+          
+      </form>
+  </body>
+
+</html>

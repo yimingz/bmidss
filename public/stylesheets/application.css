@@ -1,0 +1,347 @@
+    #Table_01 {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:100%;
+	height:100%;
+	
+}
+
+#Wrapper {
+	position:absolute;
+        left: 5%;
+        top:0px;
+        margin-bottom: 5px;
+	width:100%;
+	height:100%;
+
+}
+
+#Header-Left_ {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:100%;
+	height:137px;
+	background-image:url('http://localhost:3000/images/Header-Left.jpg');
+}
+
+#Header_ {
+	position:absolute;
+	left:20px;
+	top:0px;
+	width:1150px;
+	height:137px;
+        background-image:url('http://localhost:3000/images/Header-Right.jpg');
+        background-repeat: repeat;
+        
+}
+
+#Header-Right_ {
+	position:absolute;
+	left:1170px;
+        margin-left: 0;
+	top:0px;
+	width:20px;
+	height:137px;
+	text-align:center;
+        background-image:url('http://localhost:3000/images/Header-Right.jpg');
+	
+	}
+
+#Nav-Left_ {
+	position:absolute;
+	left:0px;
+	top:137px;
+	width:20px;
+	height:52px;
+	background-image:url('http://localhost:3000/images/Nav.jpg');
+}
+
+#Nav_ {
+	position:absolute;
+	left:20px;
+	top:137px;
+	width:1150px;
+	height:52px;
+        padding-top:14px;
+	background-image:url('http://localhost:3000/images/Nav.jpg')
+}
+
+#Nav-Right_ {
+	position:absolute;
+	left:1170px;
+	top:137px;
+	width:24px;
+	height:52px;
+}
+
+#Body-Left_ {
+	position:absolute;
+	left:0px;
+	top:189px;
+	width:20px;
+	height:985px;
+	background:#f6f6f6;
+}
+
+#Body_ {
+	position:absolute;
+	left:20px;
+	top:189px;
+	width:1150px;
+	height:985px;
+	background:#f6f6f6;
+	text-align:center;
+}
+
+#Body-Right_ {
+	position:absolute;
+	left:1170px;
+	top:189px;
+	width:24px;
+	height:985px;
+	background:#f6f6f6;
+}
+
+#Info-Left_ {
+	position:absolute;
+	left:0px;
+	top:1174px;
+	width:20px;
+	height:250px;
+	background:#f1f1f1;
+}
+
+#Info_ {
+	position:absolute;
+	left:20px;
+	top:1174px;
+	width:1150px;
+	height:250px;
+	background:#f1f1f1;
+}
+
+#Info-Right_ {
+	position:absolute;
+	left:1170px;
+	top:1174px;
+	width:24px;
+	height:250px;
+	background:#f1f1f1;
+}
+
+#Footer-Left_ {
+	position:absolute;
+	left:0px;
+	top:1430px;
+	width:20px;
+	height:70px;
+	background:#e3e2e2;
+}
+
+#Footer_ {
+	position:absolute;
+	left:20px;
+	top:1430px;
+	width:1150px;
+	height:70px;
+	background:#e3e2e2;
+}
+
+#Footer-Right_ {
+	position:absolute;
+	left:1170px;
+	top:1430px;
+	width:24px;
+	height:70px;
+	background:#e3e2e2;
+
+
+}
+
+.style1 {
+	font-family: Tahoma;
+}
+
+.style3 {
+    text-align: center;
+	font-family: Tahoma;
+	font-size: x-small;
+	color: #663300;
+        
+        text-shadow: 0px 1px 0px #FFFFFF;
+font: 12px Tahoma, Helvetica, Arial, Sans-Serif;
+font-weight:bold;
+
+}
+
+.style4 {
+    text-align: center;
+	font-family: Tahoma;
+	font-size: x-small;
+	color: #663300;
+}
+
+.Columns-Contents1 {
+	text-align: left;
+	font-family: Tahoma;
+	font-size: small;
+	border: 1px solid #CBCBCB;
+	font-family: times, Times New Roman, times-roman, georgia, serif;
+	color: #444;
+	margin: 0;
+	padding: 0px 0px 6px 0px;
+	font-size: 51px;
+	line-height: 44px;
+	letter-spacing: -2px;
+	font-weight: bold;
+}
+
+.Columns-Contents {
+	font: 20px Tahoma, Helvetica, Arial, Sans-Serif;
+	text-align: left;
+	color: #898989;
+text-shadow: 0px 1px 0px #808080;
+	border: 1px solid #CBCBCB;
+	}
+
+        .Main_Tables_Results {
+	font: 15px Tahoma, Helvetica, Arial, Sans-Serif;
+	color: #898989;
+text-shadow: 0px 1px 0px #808080;
+	border: 1px solid #CBCBCB;
+        text-align: center;
+	}
+        
+        .Additional_Results {
+	font: 15px Tahoma, Helvetica, Arial, Sans-Serif;
+	color: #EB3333;
+text-shadow: 0px 1px 0px #808080;
+	border: 1px solid #CBCBCB;
+        text-align: center;
+	}
+.Graph-Section {
+	border: 1px solid #CBCBCB;
+}
+.Columns {
+	font-family: Tahoma;
+	font-size: small;
+	color: #666666;
+	border: 1px solid #CBCBCB;
+	background-image: url('http://localhost:3000/images/Sections-Gradient.jpg');
+}
+
+.Additional_Results_Columns {
+	font-family: Tahoma;
+	font-size: small;
+	color: #666666;
+        text-align: right;
+}
+.style5 {
+	text-align: left;
+}
+
+.slide-out-div {
+          padding: 10px;
+		  padding-bottom:10px;
+          width: 550px;
+		  height:550px;
+          background:  #F0F0EE;
+		  z-index:50;
+		  opacity:0.9;
+          border: 1px solid #333300;
+		  z-index:5;
+          text-align: left;
+          
+          
+                  font: 14px Tahoma, Helvetica, Arial, Sans-Serif;
+	 font-weight:bold;
+	color: #204269;
+	text-shadow: 0px 1px 0px #b9cbd6;
+      }
+      
+      
+.slide-out-div2-Backup {
+          padding: 10px;
+		  padding-bottom:10px;
+          width: 550px;
+		  height:550px;
+          background:  #F0F0EE;
+		  z-index:50;
+		  opacity:0.9;
+          border: 1px solid #333300;
+		  color:#693600;
+		  font-weight:bold;
+		  font-size:13px;
+		  z-index:5;
+          text-align: left;
+          
+          
+                  font: 14px Tahoma, Helvetica, Arial, Sans-Serif;
+	 font-weight:bold;
+	color: #b9cbd6;
+	text-shadow: 0px 1px 0px #204269;
+      }
+	  
+.slide-out-div h2,h3{
+		  color:#996600;
+
+}
+
+.slide-out-div a:hover{
+color:#771200;
+}
+
+.BMIResults {
+	font-family: Tahoma;
+	font-size: small;
+	border: 1px solid #CBCBCB;
+	background-image: url('http://localhost:3000/images/Sections-Gradient.jpg');
+}
+.style6 {
+  font: 25px Tahoma, Helvetica, Arial, Sans-Serif;
+	color: #5289E4;
+}
+.Red-Indicator {
+ font: 25px Tahoma, Helvetica, Arial, Sans-Serif;
+	color: #EB3333;
+}
+.Green-Indicator {
+ font: 25px Tahoma, Helvetica, Arial, Sans-Serif;
+	color: #6AAD35;
+}
+
+.Info-Pane-Titles {
+text-shadow: 0px 1px 0px #FFFFFF;
+font: 20px Tahoma, Helvetica, Arial, Sans-Serif;
+font-weight:bold;
+	color: #ffa101;
+}
+
+.Info-Pane-Contents {
+text-shadow: 0px 1px 0px #FFFFFF;
+font: 14px Tahoma, Helvetica, Arial, Sans-Serif;
+font-weight:bold;
+	color: #8d8671;
+}
+
+
+
+.style7 {
+	font-size: x-small;
+}
+
+div.htmltooltip{
+position: absolute; 
+z-index: 1000;
+left: -1000px;
+top: -1000px;
+background: #272727;
+border: 10px solid black;
+color: white;
+padding: 3px;
+width: 250px; 
+}
+
+

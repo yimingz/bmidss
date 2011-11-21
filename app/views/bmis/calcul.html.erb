@@ -1,0 +1,12 @@
+<% if !params@bmi.nickname.nil? %>
+<ul>
+  Result for <strong><%= params[:race] %></strong> <strong><%= params[:age] %></strong>-year old <strong><%= params[:gender] %></strong>, <strong><%= params[:height_cm] %></strong>cm, <strong><%= params[:weight_kg] %></strong>kg:
+</ul>
+
+<ul>
+  <strong>BMI is</strong> <%= @bmi.to_f%>
+</ul>
+
+<% if !@player.nickname.nil? %>
+<h1><%=@player.first_name+" \""+@player.nickname+"\" "+@player.last_name%></h1>
+<% end %>

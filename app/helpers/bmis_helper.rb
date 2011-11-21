@@ -1,0 +1,2 @@
+module BmisHelper
+end

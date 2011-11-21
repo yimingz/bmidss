@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  age: 
+  race: MyString
+  gender: MyString
+  weight: 
+  height: 
+
+two:
+  age: 
+  race: MyString
+  gender: MyString
+  weight: 
+  height: 

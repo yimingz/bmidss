@@ -1,0 +1,196 @@
+
+
+          <table style="width: 100%">
+            <tr>
+              <td id="chart" rowspan="2" style="width: 700px" class="Graph-Section">
+                <head>
+                  <!--Load the AJAX API-->
+                  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+                  <script type="text/javascript">
+    
+                    // Load the Visualization API and the piechart package.
+                    google.load('visualization', '1.0', {'packages':['corechart']});
+      
+                    // Set a callback to run when the Google Visualization API is loaded.
+
+<%
+require 'sqlite3'
+
+  grayBegin=4
+  basisBegin=1
+  count = 0
+  genderString = params[:gender]
+  raceString = params[:race]
+  height = Integer(params[:height_feet])
+  height = height * 12
+  height = height + Integer(params[:height_inch])
+  gender = genderString[0]
+  race = raceString[0]
+  db = SQLite3::Database.new( "db/patrick.sqlite3" )
+  gray = db.get_first_row("select * from FullDataWeights where Gender='" + (gender) + "' and Age=" + params[:age].to_s + " and Race='" + (race) + "' and Year=2008 ")
+  
+  result = []
+  result << ['Weight', '# of People Like You', 'Population']
+  db.execute( "select * from BasisGraphs where Height=" + height.to_s) do |row|
+    current = []
+    current << (count+100).to_s
+    if(Integer(params[:weight_lb]) != count+100)
+      current << 0
+      point = (row.at(basisBegin+1)* gray.at(grayBegin+1)) + (row.at(basisBegin+2)*gray.at(grayBegin+2)) + (row.at(basisBegin+3)*gray.at(grayBegin+3)) + (row.at(basisBegin+4)*gray.at(grayBegin+4)) + (row.at(basisBegin+5)*gray.at(grayBegin+5)) + (row.at(basisBegin+6)*gray.at(grayBegin+6)) + (row.at(basisBegin+7)*gray.at(grayBegin+7)) + (row.at(basisBegin+8)*gray.at(grayBegin+8)) 
+      current << Integer(point * gray.at(grayBegin))
+    else
+      point = (row.at(basisBegin+1)* gray.at(grayBegin+1)) + (row.at(basisBegin+2)*gray.at(grayBegin+2)) + (row.at(basisBegin+3)*gray.at(grayBegin+3)) + (row.at(basisBegin+4)*gray.at(grayBegin+4)) + (row.at(basisBegin+5)*gray.at(grayBegin+5)) + (row.at(basisBegin+6)*gray.at(grayBegin+6)) + (row.at(basisBegin+7)*gray.at(grayBegin+7)) + (row.at(basisBegin+8)*gray.at(grayBegin+8)) 
+      current << Integer(point * gray.at(grayBegin))
+      current << Integer(point * gray.at(grayBegin))
+    end
+    count = count + 1
+    
+  result << current   
+  end
+
+%>
+                    function drawVisualization() {
+                      // Some raw data (not necessarily accurate)
+
+                    var fitChart;
+
+                      var rowData = new Array();
+                       rowData = <%=  raw result.to_json %> ;
+                      // Create and populate the data table.
+                      var data = google.visualization.arrayToDataTable(rowData);
+                      
+                      // Options
+
+             
+                      var options = {
+                        chf:'bg,s,383232',
+                        chxl: '',
+                        chxp: '',
+                        chxr: '0,100,300|1,100,300',
+                        chxs: '0,676767,11.5,0,lt,676767',
+                        chxtc: '0,5',
+                        chxt: 'x,x',
+                        title : 'Results for <%= params[:race] %> <%= params[:age] %> year old <%= params[:gender] %>, <%= params[:height_feet] %> feet <%= params[:height_inch] %> inch , <%= params[:weight_lb] %> pounds ',
+                        width: 800,
+                        height: 400,         
+                        vAxis: {title: "Number of People"},
+                        hAxis: {title: "Weight"},
+                        seriesType: "bars",
+                        series: {1: {type: "area"}
+                          
+                          
+                        }
+                      };
+                          
+                      // Create and draw the visualization.
+                      fitChart = new google.visualization.ComboChart(document.getElementById('visualization'));
+                      fitChart.draw(data, options);
+                      
+                      
+                     google.visualization.events.addListener(fitChart, 'onmouseover', barMouseOver);
+                     google.visualization.events.addListener(fitChart, 'onmouseout', barMouseOut);
+                     
+                     
+                     function barMouseOver(e) {
+
+                       fitChart.setSelection([{'row': null, 'column': null}]);
+                     }
+
+                     function barMouseOut(e) {
+
+                       fitChart.setSelection([{'row': null, 'column': null}]);
+                     }
+                    }                 
+                    
+
+                    google.setOnLoadCallback(drawVisualization);
+                  </script>
+
+                  <body style="font-family: Arial;border: 0 none;">
+                    <div id="visualization" style="width: 600px; height: 400px;"></div>
+                  </body>
+
+                  <body>
+                    <!--Div that will hold the pie chart-->
+                    <div id="chart_div"></div>
+
+                    <div class="slide-out-div">
+                      <a class="handle" href="http://link-for-non-js-users.html">Content</a>
+                      <h2 class="header">Tips and Hints</h2>
+                      <table id="greentable">
+                        <tr>
+                          <td>
+                            <ul>
+                              <li>Drag the blue bar on the graph to explore other BMIs close to you.</li>
+                            </ul>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <ul>
+                              <li>Hover over the graph to learn more about your weight ranges.</li>
+                            </ul>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><ul>
+                              <li>The colored areas under the curve indicate the percentage of people in each health category:</li>
+                              <ul>
+                                <li>Green: Healthy body weight</li>
+                                <li>Yellow: Overweight</li>
+                                <li>Orange: Obese</li>
+                                <li>Red: Morbidly obese</li>
+                              </ul>
+                            </ul></td>
+                        </tr>
+
+                      </table>
+                    </div>
+
+                  </body>
+
+              </td>
+              <td style="width: 231px; height: 42px;" class="Columns"><strong>
+			Your Results </strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="Columns-Contents" valign="top">
+                <table style="width: 100%">
+                  <tr>
+                    <td style="width: 60px">
+                      <%= image_tag "calculator-icon.png", :size => "60x60" %></td>
+                    <td>Your BMI is <span class="style6"><strong><%= @bmi.to_f %></strong></span></td>
+                    <td>
+                      <%= image_tag "help.png", :size => "30x30" %></td>
+                  </tr>
+                  <tr>
+                    <td style="width: 60px">
+                       <%= image_tag "graph-icon.png", :size => "60x60" %></td>
+                    <td>The <span class="style6"><strong>Blue</strong></span> line represents you</td>
+                    <td>
+                       <%= image_tag "help.png", :size => "30x30" %></td>
+                  </tr>
+                  <tr>
+                    <td style="width: 60px">
+                       <%= image_tag "up-arrow1.png", :size => "60x60" %></td>
+                    <td><span class="Red-Indicator"><strong>47%</strong></span> of
+					people like you have a higher BMI &nbsp;</td>
+                    <td>
+                       <%= image_tag "help.png", :size => "30x30" %></td>
+                  </tr>
+                  <tr>
+                    <td style="width: 60px">
+                       <%= image_tag "down-arrow.png", :size => "60x60" %></td>
+                    <td><span class="Green-Indicator"><strong>53%</strong></span> of
+					people like you have a lower BMI</td>
+                    <td>
+                       <%= image_tag "help.png", :size => "30x30" %></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+
+
+

@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    
+<title>Where Do We Fit?</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<%= javascript_include_tag 'jquery-1.5.1.min.js' %>
+<%= javascript_include_tag "jquery.tipsy.js" %>
+<style>
+html{
+	background: url(images/right_wing.jpg) repeat-x top center fixed;
+}
+
+.style1 {
+	background-image: url('images/headline.jpg');
+	font-size: large;
+}
+.style2 {
+	background-image: url('images/calculator.jpg');
+        font: 14px Tahoma, Helvetica, Arial, Sans-Serif;
+	 font-weight:bold;
+	color: #b9cbd6;
+	text-shadow: 0px 1px 0px #204269;
+}
+
+.headline1 {
+	 font: 25px Tahoma, Helvetica, Arial, Sans-Serif;
+	 font-weight:bold;
+	color: #b9cbd6;
+	text-shadow: 0px 1px 0px #204269;
+}
+
+.headtitlecontent {
+	 font: 14px Tahoma, Helvetica, Arial, Sans-Serif;
+	 font-weight:lighter;
+	color: #FFFFFF;
+	text-shadow: 0px 1px 0px #204269;
+
+}
+
+.footer {
+	 font: 12px Tahoma, Helvetica, Arial, Sans-Serif;
+	 text-align:center;
+	 font-weight:lighter;
+	color: #6e666e;
+
+
+}
+
+/* Tipsy */
+.tipsy { padding: 5px; font: 12px Tahoma, Helvetica, Arial, Sans-Serif; opacity: 0.8; filter: alpha(opacity=80); background-repeat: no-repeat;  background-image: url(http://localhost:3000/images/tipsy.gif); }
+  .tipsy-inner { padding: 5px 8px 4px 8px; background-color: black; color: white; max-width: 200px; text-align: center; }
+  .tipsy-inner { -moz-border-radius:3px; -webkit-border-radius:3px; }
+  .tipsy-north { background-position: top center; }
+  .tipsy-south { background-position: bottom center; }
+  .tipsy-east { background-position: right center; }
+  .tipsy-west { background-position: left center; }
+
+</style>
+</head>
+<body bgcolor="#FFFFFF" style="background-image: url('images/right_wing.jpg'); margin-top: 0;">
+<table id="Table_01" width="1201" border="0" cellpadding="0" cellspacing="0" align="center">
+	<tr>
+		<td rowspan="4">
+			
+                       
+                   <%= image_tag "left_wing.jpg", :size => "25x551" %>
+                </td>
+		<td colspan="2">
+			
+                        <%= image_tag "logo.jpg", :size => "729x150" %>
+                </td>
+		<td rowspan="3">
+			
+                        <%= image_tag "divider.jpg", :size => "9x420" %>
+                </td>
+		<td rowspan="3" style="width: 425px; height: 420px" class="style2">
+<%= yield %>
+</td>
+		<td rowspan="4">
+		
+                        <%= image_tag "right_wing.jpg", :size => "13x551" %>
+                </td>
+	</tr>
+	<tr>
+		<td rowspan="2">
+			
+                        <%= image_tag "left-wing-06.jpg", :size => "1x270" %>
+                
+                </td>
+		<td style="width: 728px; height: 141px" class="style1" valign="top">
+			<strong><span class="headline1">Know where you stand!</span>&nbsp;<br />
+			<span class="headtitlecontent"><br />
+			Through our website WhereDoWeFit.com you will be 
+			able to calculate, compare, and analyze&nbsp; your Body Mass Index 
+			(BMI) as simple as entering your gender, age, race, height, and 
+			weight.<br />
+			<br />
+			Stay healthy, use WhereDoWeFit.com!</span></strong></td>
+	</tr>
+	<tr>
+		<td>
+			
+                        <%= image_tag "symbols.jpg", :size => "728x129" %>
+                </td>
+	</tr>
+	<tr>
+		<td colspan="4" style="width: 1163px; height: 131px" class="footer">
+			<%= link_to 'Where Do We Fit?', main_path %> | <%= link_to 'About us', about_path %> | <%= link_to 'Contact us', contact_path %><br />
+		Copyright © 2011. Where Do We Fit - Carnegie Mellon University. All rights reserved.</td>
+	</tr>
+</table>
+
+</body>
+</html>

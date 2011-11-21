@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Age:</b>
+  <%= @bmi.age %>
+</p>
+
+<p>
+  <b>Race:</b>
+  <%= @bmi.race %>
+</p>
+
+<p>
+  <b>Gender:</b>
+  <%= @bmi.gender %>
+</p>
+
+<p>
+  <b>Weight lb:</b>
+  <%= @bmi.weight_lb %>
+</p>
+
+<p>
+  <b>Weight kg:</b>
+  <%= @bmi.weight_kg %>
+</p>
+
+<p>
+  <b>Height inch:</b>
+  <%= @bmi.height_inch %>
+</p>
+
+<p>
+  <b>Height feet:</b>
+  <%= @bmi.height_feet %>
+</p>
+
+<p>
+  <b>Height cm:</b>
+  <%= @bmi.height_cm %>
+</p>
+
+
+<%= link_to 'Edit', edit_bmi_path(@bmi) %> |
+<%= link_to 'Back', bmis_path %>

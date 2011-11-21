@@ -1,0 +1,139 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+  <head>
+<title>BMI DSS Layout</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<%= stylesheet_link_tag '/stylesheets/application.css' %>
+    <%= csrf_meta_tag %>
+    <%= yield(:head) %>
+	<%= javascript_include_tag "http://www.google.com/jsapi" %>
+	<%= javascript_include_tag 'jquery-1.5.1.min.js' %>
+	<%= javascript_include_tag 'jquery-ui-1.8.11.custom.min.js' %>
+	<%= javascript_include_tag 'application.js'  %>
+        <%= javascript_include_tag 'jquery.simpletip-1.3.1.js'  %>
+        <%= javascript_include_tag 'jquery.tabSlideOut.v1.3'  %>
+        <%= javascript_include_tag 'bmi.js'  %>
+
+     <script type="text/javascript">
+    $(function(){
+        $('.slide-out-div').tabSlideOut({
+            tabHandle: '.handle',                     //class of the element that will become your tab
+            pathToTabImage: '/images/tips_tricks.png', //path to the image for the tab //Optionally can be set using css
+            imageHeight: '122px',                     //height of tab image           //Optionally can be set using css
+            imageWidth: '30px',                       //width of tab image            //Optionally can be set using css
+            tabLocation: 'right',                      //side of screen where tab lives, top, right, bottom, or left
+            speed: 300,                               //speed of animation
+            action: 'click',                          //options: 'click' or 'hover', action to trigger animation
+            topPos: '5px',                          //position from the top/ use if tabLocation is left or right
+            leftPos: '20px',                          //position from left/ use if tabLocation is bottom or top
+            fixedPosition: true                    //options: true makes it stick(fixed position) on scroll
+        });
+
+    });
+
+    </script>
+
+  <script type="text/javascript">
+
+      function toggleVisibility(newSection) {
+          $(".section").not("#" + newSection).hide();
+          $("#" + newSection).show();
+      }
+  </script>
+<style type="text/css">
+table#bmitbl { width:350px !important; margin:5px 35px !important; color:#6f6f6f;}
+#bmitbl td { border:#ccc 1px solid; border-top:#000 0 solid; padding:3px !important; text-align:center; }
+#bmitbl td.last { border-width:0 1px 1px 0; }
+#bmitbl th { font-weight:bold; text-align:center; border-bottom: #ccc 1px solid; padding-bottom:3px !important; color:#2985B4; }
+#bmitbl td.highlight { background-color:#abbdd8; color:#343434; }
+
+.formrow  { color:#919191; background-color:#D7DFEC; margin-left:35px; width:350px; padding-bottom:10px; }
+.formrow p  { color:#343434 !important;  margin:10px; }
+.formrow p strong  { color:#7C65AA !important;  font-weight:bold; }
+.formcol { width:90px; margin:10px 10px 0 10px; float:left;}
+.formcol label { font-weight:bold; color: #343434; }
+.formcol label input { width:80px; color:#6f6f6f; }
+</style>
+
+<script type="text/javascript">
+    function parseIntegers(val) {
+        var output = parseInt(val);
+        if(!(output > 0)){
+            output = '';
+        }
+
+        return output;
+    }
+    function calculateBMI(){
+        var ids = new Array('bmi_1a', 'bmi_1b','bmi_2a', 'bmi_2b','bmi_3a', 'bmi_3b','bmi_4a', 'bmi_4b');
+        var ids_ct = ids.length;
+        for(i=0; i < ids_ct; i++){
+            $(ids[i]).removeClassName('highlight')
+        }
+
+        var form = document.forms.bmi;
+
+        var height = parseIntegers(form.height.value);
+        var weight = parseIntegers(form.weight.value);
+
+        var error = false;
+        var emessage = "The Following errors were found in this form.\n";
+
+        emessage += "Please correct them before trying to calculate again.\n";
+        emessage += "-------------------------------------\n";
+        if(weight=="") {
+            emessage += "Weight - please enter your weight in pounds\n";
+            error = true;
+        }
+        if(height=="") {
+            emessage += "Height - please enter your height in inches\n";
+            error = true;
+        }
+        if(error) {
+            alert(emessage);
+            return !error;
+        }
+
+        // Calculates, and rounds to 2 decimals
+        var bmicalc = Math.round(( (weight/( height * height ))  * 703 ) * 100)/100;
+
+        var outputStr = "At " + height + "\" tall and " + weight + "lbs your BMI is: <strong>" + bmicalc + "</strong>";
+
+        document.getElementById('BMIoutput').innerHTML=outputStr;
+
+        if(bmicalc < 18.5){
+            $('bmi_1a').addClassName('highlight')
+            $('bmi_1b').addClassName('highlight')
+        } else if (bmicalc < 24.9){
+            $('bmi_2a').addClassName('highlight')
+            $('bmi_2b').addClassName('highlight')
+        } else if (bmicalc < 29.9){
+            $('bmi_3a').addClassName('highlight')
+            $('bmi_3b').addClassName('highlight')
+        } else {
+            $('bmi_4a').addClassName('highlight')
+            $('bmi_4b').addClassName('highlight')
+        }
+
+    }
+</script>
+
+</head>
+  <body>
+     <div class="slide-out-div">
+            <a class="handle" href="http://link-for-non-js-users.html">Content</a>
+            <h2 class="header">Tips and Tricks</h2>
+        <table id="greentable">
+            <tr>
+                <td><b>Tips</b></td>
+                <td><b>Tricks</b></td>
+            </tr>
+            <tr>
+            </tr>
+        </table>
+       </div>
+        
+  </body>
+</html>
+         

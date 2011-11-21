@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+  <head>
+    <title>BMI DSS Layout</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <%= stylesheet_link_tag '/stylesheets/application.css' %>
+    <%= csrf_meta_tag %>
+    <%= yield(:head) %>
+    <%= javascript_include_tag "http://www.google.com/jsapi" %>
+    <%= javascript_include_tag 'jquery-1.5.1.min.js' %>
+    <%= javascript_include_tag 'jquery-ui-1.8.11.custom.min.js' %>
+    <%= javascript_include_tag 'application.js'  %>
+    <%= javascript_include_tag 'jquery.simpletip-1.3.1.js'  %>
+    <%= javascript_include_tag 'jquery.tabSlideOut.v1.3'  %>
+    <%= javascript_include_tag 'highcharts' %> <!--[if IE]> <%= javascript_include_tag 'excanvas.compiled' %> <![endif]-->
+<%= javascript_include_tag "jquery-1.4.2.min", "rails", "highcharts" %>
+
+
+
+    
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+    <script>
+    $(document).ready(function() {
+      $("#tabs").tabs();
+    });
+    </script>
+
+    <script type="text/javascript">
+      $(function(){
+        $('.slide-out-div').tabSlideOut({
+          tabHandle: '.handle',                     //class of the element that will become your tab
+          pathToTabImage: 'http://localhost:3000/images/input.png', //path to the image for the tab //Optionally can be set using css
+          imageHeight: '122px',                     //height of tab image           //Optionally can be set using css
+          imageWidth: '30px',                       //width of tab image            //Optionally can be set using css
+          tabLocation: 'right',                      //side of screen where tab lives, top, right, bottom, or left
+          speed: 300,                               //speed of animation
+          action: 'click',                          //options: 'click' or 'hover', action to trigger animation
+          topPos: '5px',                          //position from the top/ use if tabLocation is left or right
+          leftPos: '20px',                          //position from left/ use if tabLocation is bottom or top
+          fixedPosition: true                    //options: true makes it stick(fixed position) on scroll
+        });
+
+      });
+
+    </script>
+
+    <script type="text/javascript">
+
+      function toggleVisibility(newSection) {
+        $(".section").not("#" + newSection).hide();
+        $("#" + newSection).show();
+      }
+    </script>
+    
+          <script type="text/javascript">
+        function showhide1(sh){
+        if(sh) {
+        disp="inline";
+        zi=1;
+        }else{
+        disp="none";
+        zi=-10;
+        }
+
+        for (i=0; i<document.getElementsByTagName("*").length; i++) {
+        if (document.getElementsByTagName("*").item(i).className == "divclass1")
+        {
+        document.getElementsByTagName("*").item(i).style.display=disp;
+        document.getElementsByTagName("*").item(i).style.zIndex=zi;
+        }
+        }
+        }
+    </script>
+    <script type="text/javascript">
+      function showhide2(sh){
+
+      if(sh) {
+      disp="inline";
+      zi=1;
+      }else{
+      disp="none";
+      zi=-10;
+      }
+
+      for (i=0; i<document.getElementsByTagName("*").length; i++) {
+      if (document.getElementsByTagName("*").item(i).className == "divclass2")
+      {
+      document.getElementsByTagName("*").item(i).style.display=disp;
+      document.getElementsByTagName("*").item(i).style.zIndex=zi;
+      }
+      }
+      
+      }
+      </script>
+
+
+  </head>
+
+
+  <body background="http://localhost:3000/images/bg1.jpg" style="background-color:#FFFFFF;">
+    <div id="Wrapper">
+                          <div class="slide-out-div">
+                      <a class="handle" href="http://link-for-non-js-users.html">Content</a>
+                     <form>
+
+
+      </br>
+      </br>
+      Select Units:
+          <input type="radio" name="type" value="Metric" checked="checked" onclick="showhide1(1); showhide2(0);"/>
+            Metric
+          <input type="radio" name="type" value="Standard" onclick="showhide1(0); showhide2(1);"/>
+            US standards</br>
+         </br>
+            <div class="divclass1">
+               <%= form_tag('http://localhost:3000/home/') do %>
+                  <ul>
+                  <%= label_tag :gender %>
+                  <%= select_tag(:gender,
+                  options_for_select(Bmi::GENDER_LIST)) %>
+                  </ul>
+                  <ul>
+                  <%= label_tag :race %>
+                  <%= select_tag(:race,
+                  options_for_select(Bmi::RACE_LIST)) %>
+                  </ul>
+                  <ul>
+                  <%= label_tag :age %>
+                  <%= number_field_tag(:age) %>
+                  </ul>
+                  <ul>
+                  <%= label_tag :weight_kg %>
+                  <%= number_field_tag(:weight_kg) %>
+                  </ul>
+                  <ul>
+                  <%= label_tag :height_cm %>
+                  <%= number_field_tag(:height_cm) + "cm"%>
+                  </ul>
+                  <ul>
+                    <%= submit_tag("Calculate") %>
+                  </ul>
+                  <% end %>
+            </div>
+            
+            <div class="divclass2" style="display: none;">
+              
+                  <%= form_tag('http://localhost:3000/home/') do %>
+
+                  <ul>
+                  <%= label_tag :gender %>
+                  <%= select_tag(:gender,
+                  options_for_select(Bmi::GENDER_LIST), :prompt => "Select...") %>
+                  </ul>
+                  <ul>
+                  <%= label_tag :race %>
+                  <%= select_tag(:race,
+                  options_for_select(Bmi::RACE_LIST), :prompt => "Select...") %>
+                  </ul>
+                  <ul>
+                  <%= label_tag :age %>
+                  <%= number_field_tag(:age) %>
+                  </ul>
+                  <ul>
+                  <%= label_tag :weight %>
+                  <%= number_field_tag(:weight_lb) %>
+                  </ul>
+                  <ul>
+                  <%= label_tag :height %>
+                  <%= select_tag(:height_feet, options_for_select(Bmi::FEET_LIST)) + "feet" + select_tag(:height_inch, options_for_select(Bmi::INCH_LIST)) +  "inch"%>
+                  </ul>
+                  <ul>
+                    <%= submit_tag("Calculate") %>
+                  </ul>
+                  <% end %>
+            </div>
+          
+      </form>
+       </div>
+      
+      <div  id="Table_01">
+        <div id="Header-Left_">
+          <img id="Header_Left" src="http://localhost:3000/images/Header_Left.jpg" width="20" height="137" alt="" />
+        </div>
+        <div id="Header_">
+           <%= image_tag "Header.jpg", :size => "980x137" %>
+        </div>
+        <div id="Header-Right_">
+          <img id="Header_Left" src="http://localhost:3000/images/Header-Right.jpg" width="24" height="137" alt="" />
+        </div>
+        <div id="Nav-Left_">
+          <img id="Nav_Left" src="http://localhost:3000/images/Nav-Left.jpg" width="20" height="52" alt="" />
+        </div>
+        <div id="Nav_">
+
+          &nbsp;</div>
+        <div id="Nav-Right_">
+          <img id="Nav_Right" src="http://localhost:3000/images/Nav-Right.jpg" width="24" height="52" alt="" />
+        </div>
+        <div id="Body-Left_">
+          <img id="Body_Left" src="http://localhost:3000/images/Body-Left.jpg" width="20" height="485" alt="" />
+        </div>
+        <div id="Body_" class="style5">
+
+<%= yield %>
+        </div>
+        <div id="Body-Right_">
+          <img id="Body_Right" src="http://localhost:3000/images/Body-Right.jpg" width="24" height="485" alt="" />
+        </div>
+        <div id="Info-Left_">
+          <img id="Info_Left" src="http://localhost:3000/images/Info-Left.jpg" width="20" height="226" alt="" />
+        </div>
+        <div id="Info_">
+          <span class="style1"><span style="style2"><strong class="Info-Pane-Titles"><br />
+		What is BMI?
+              </strong><br />
+              <span class="Info-Pane-Contents">Body Mass Index (BMI) is a number calculated from a person's weight and height. BMI provides a reliable indicator of body fatness for most people and is used to screen for weight categories that may lead to health problems. <a href="http://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html">Learn more at the U.S. Centers for Disease Control website.</a></span>
+              <br />
+              <br />
+              <strong class="Info-Pane-Titles">How do I compare to my peers?</strong><br />
+              <span class="Info-Pane-Contents">According to your results, your BMI falls with the middle 50% of your peers' BMIs.</span><br />
+              <br />
+              <strong class="Info-Pane-Titles">Do I have a healthy body weight?</strong><br />
+              <span class="Info-Pane-Contents">You have a healthy body weight. You have a BMI of 20 and a person with a BMI of 18.5 to 24.9 is considered to be at a healthy weight. A person with a BMI of 25-29.9 is considered to be overweight. A BMI over 30 is considered obese. A BMI of 40 or above indicates that a person is morbidly obese. This can increase a person's risk of death from any cause by 50% to 150%.</span>
+              <br />
+              <br />
+            </span></span></div>
+        <div id="Info-Right_">
+          <img id="Info_Right" src="http://localhost:3000/images/Info-Right.jpg" width="24" height="226" alt="" />
+        </div>
+        <div id="Footer-Left_">
+          <img id="Footer_Left" src="http://localhost:3000/images/Footer-Left.jpg" width="20" height="50" alt="" />
+        </div>
+        <div id="Footer_">
+          <br />
+          <div class="style3">Copyright © 2011. BMI-DSS - Carnegie Mellon University. All rights reserved.
+            <p class="style4">
+              <%= link_to 'Home', home_path %>&nbsp;&nbsp;::&nbsp;&nbsp;
+              <%= link_to 'About', about_path %>&nbsp;&nbsp;::&nbsp;&nbsp;
+              <%= link_to 'Contact Us', contact_path %>
+            </p>
+          </div>
+        </div>
+        <div id="Footer-Right_">
+          <img id="Footer_Right" src="http://localhost:3000/images/Footer-Right.jpg" width="24" height="50" alt="" />
+        </div>
+
+      </div>
+    </div>
+  </body>
+
+</html>

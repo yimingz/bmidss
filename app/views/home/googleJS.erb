@@ -1,0 +1,60 @@
+ 	function drawVisualization() {
+         // Some raw data (not necessarily accurate)
+
+       var fitChart;
+
+         var rowData = new Array();
+          rowData = <%=  raw result.to_json %> ;
+         // Create and populate the data table.
+         var data = google.visualization.arrayToDataTable(rowData);
+     
+         // Options
+
+
+         var options = {
+           chf:'bg,s,383232',
+           chxl: '',
+           chxp: '',
+           chxr: '0,100,300|1,100,300',
+           chxs: '0,676767,11.5,0,lt,676767',
+           chxtc: '0,5',
+           chxt: 'x,x',
+           title : 'Results for <%= params[:race] %> <%= params[:age] %> year old <%= params[:gender] %>, <%= params[:height_feet] %> feet <%= params[:height_inch] %> inch , <%= params[:weight_lb] %> pounds ',
+           width: 1040,
+           height: 350,         
+           vAxis: {title: "Number of People"},
+           hAxis: {title: "Weight"},
+           seriesType: "bars",
+           series: {1: {type: "area"}
+         
+         
+           }
+         };
+         
+         // Create and draw the visualization.
+         fitChart = new google.visualization.ComboChart(document.getElementById('visualization'));
+         fitChart.draw(data, options);
+     
+     
+        google.visualization.events.addListener(fitChart, 'onmouseover', barMouseOver);
+        google.visualization.events.addListener(fitChart, 'onmouseout', barMouseOut);
+    
+    
+        function barMouseOver(e) {
+
+          fitChart.setSelection([{'row': null, 'column': null}]);
+        }
+
+        function barMouseOut(e) {
+
+          fitChart.setSelection([{'row': null, 'column': null}]);
+        }
+       }                 
+   
+
+       google.setOnLoadCallback(drawVisualization);
+     </script>
+
+     <body style="font-family: Arial;border: 0 none;">
+       <div id="visualization" style="width: 100%"></div>
+     </body>

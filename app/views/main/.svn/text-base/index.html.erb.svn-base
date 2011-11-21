@@ -1,0 +1,66 @@
+<form>
+<script type='text/javascript'>
+	$(function() {
+    $('#north').tipsy({gravity: 'n', fade: true});
+    $('#south').tipsy({gravity: 's', fade: true});
+    $('#east').tipsy({gravity: 'e', fade: true});
+    $('#west').tipsy({gravity: 'w', fade: true});
+    $('#north-west').tipsy({gravity: 'nw', fade: true});
+    $('#north-east').tipsy({gravity: 'ne', fade: true});
+    $('#south-west').tipsy({gravity: 'sw', fade: true});
+    $('#south-east').tipsy({gravity: 'se', fade: true});
+    $('#foo').tipsy({gravity: $.fn.tipsy.autoNS, fade: true});
+    $('a[rel=tipsy]').tipsy({fade: true, gravity: 'n'});
+
+	});
+        
+</script>
+</form>
+      </br>
+      </br>
+      US Standards:
+         </br>
+            
+            <div>
+              
+                  <%= form_tag('home/') do %>
+                  <ul>
+                    
+                  <%= label_tag :year %>
+                    <a rel='tipsy' title='Select the year that you want to be compared aganist'>
+                 <%= image_tag "help.png", :size => "15x15" %></a>
+                  <%= select_tag(:year,
+                  options_for_select(Bmi::YEAR_LIST, "2010")) %>
+                  </ul>
+                  <ul>
+                  <%= label_tag :gender %>
+                  <%= select_tag(:gender,
+                  options_for_select(Bmi::GENDER_LIST, :disabled => ['Select...'])) %>
+                  </ul>
+                  <ul>
+                  <%= label_tag :race %>
+                  <%= select_tag(:race,
+                  options_for_select(Bmi::RACE_LIST), :prompt => "Select...") %>
+                  </ul>
+                  <ul>
+                  <%= label_tag :activity_level %>
+                  <%= select_tag(:activity_level,
+                  options_for_select(Bmi::ACTIVITY_LEVEL), :prompt => "Select...") %>
+                  </ul>                   
+                  <ul>
+                  <%= label_tag :age %>
+                  <%= number_field_tag(:age, 0, :in => 18...65) %> (18 - 65)
+                  </ul>           
+                  <ul>
+                  <%= label_tag :weight %>
+                  <%= number_field_tag(:weight_lb, 0, :in => 75...350)+ "lb"  %> (75 - 350)
+                  </ul>
+                  <ul>
+                  <%= label_tag :height %>
+                  <%= select_tag(:height_feet, options_for_select(Bmi::FEET_LIST, 5)) + "feet" + select_tag(:height_inch, options_for_select(Bmi::INCH_LIST)) +  "inch"%>
+                  </ul>
+                  <ul>
+                    <%= submit_tag("Calculate") %>
+                  </ul>
+                  <% end %>
+            </div>

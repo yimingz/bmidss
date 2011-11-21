@@ -1,0 +1,273 @@
+
+    <div id="fragment-2">
+      
+            <!-- First Results Table: Start !-->
+                <table style="width: 100%">
+				<tr>
+					<td class="Columns" style="width: 90px"><strong>Age</strong></td>
+		<td class="Columns" style="width: 90px"><strong>Gender</strong></td>
+		<td class="Columns" style="width: 90px"><strong>Race</strong></td>
+		<td class="Columns" style="width: 90px"><strong>Height</strong></td>
+		<td class="Columns" style="width: 90px"><strong>Year</strong></td>
+		<td class="Columns" style="width: 90px">
+                <strong>Peer Group</strong>
+                  <img alt="" src="images/help.png" width="15" height="15" title="The total number of people with same gender, age, race, and height as you"/>
+                </td>
+		<td style="width: 90px">&nbsp;</td>
+		<td class="Columns" style="width: 90px"><strong>Weight</strong></td>
+                <td class="Columns" style="width: 90px">
+                <strong>BMI</strong>
+                  <img alt="" src="images/help.png" width="15" height="15" title="BMI(body mass index) is a heuristic proxy for human body fat based on an indivisual's weight and height."/>
+                </td>
+		<td class="Columns" style="width: 90px">
+                  <strong>% Body Fat</strong>
+                  <img alt="" src="images/help.png" width="15" height="15" title="Total wegith of the person's fat divided by the person's weight"/>
+                </td>
+	</tr>
+	<tr>
+		<td class="Main_Tables_Results"><%= params[:age] %></td>
+		<td class="Main_Tables_Results"><%= params[:gender] %></td>
+		<td class="Main_Tables_Results"><%= params[:race] %></td>
+		<td class="Main_Tables_Results">
+                  <% if params[:height_cm].nil? %>
+                     <%= params[:height_feet]%> ft <%= params[:height_inch]%> inches
+                  <% end %>
+                  <% if params[:height_feet].nil? %>
+                    <%= params[:height_cm] %> cm
+                  <% end %>
+                </td>
+		<td class="Main_Tables_Results"><%= params[:year] %></td>
+		<td class="Main_Tables_Results">8,234</td>
+		<td></td>
+		<td class="Main_Tables_Results">
+                  <% if params[:weight_kg].nil? %>
+                    <%= params[:weight_lb] %> lb
+                  <% end %>
+                  <% if params[:weight_lb].nil? %>
+                    <%= params[:weight_kg] %> kg
+                  <% end %>
+                </td>
+		<td class="Main_Tables_Results">
+                  <% if params[:weight_kg].nil? %>
+                    <%= ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))).round(2) %>
+                  <% end %>
+                  <% if params[:weight_lb].nil? %>
+                    <%= (params[:weight_kg].to_f / ((params[:height_cm].to_f)/100 * (params[:height_cm].to_f)/100)).round(2) %>
+                  <% end %>
+                </td>
+		<td class="Main_Tables_Results">29%</td>
+	</tr>
+</table>
+       <!-- First Results Table: END !-->
+       
+            <table style="width: 100%">
+            <tr>
+              <td id="chart" style="width: 700px" class="Graph-Section">
+                <head>                       
+
+	                 <body style="font-family: Arial;border: 0 none;">
+	                   <div>
+	
+
+<%= high_chart("my_id1", @h1) do |c| %>
+        <%= "options.tooltip.formatter = function() { return this.series.name +' is '+ this.x +', population ' + this.y;}" %>						   
+      <%end %>  
+                             </div>
+	                 </body>
+
+           
+              </td>
+            </tr>
+               </table>
+       
+             <!-- Results Table !--> 
+       <table style="width: 100%">
+    
+ <tr>
+		<td style="width: 300px">&nbsp;</td>
+		<td colspan="2" class="Columns" style="width: 100px"><strong>Underweight</strong>
+                  <img alt="" src="images/help.png" width="15" height="15" title="BMI of between 16.0 and 18.5"/>
+                </td>
+		<td colspan="2" class="Columns" style="width: 100px"><strong>Normal</strong>
+                  <img alt="" src="images/help.png" width="15" height="15" title="BMI of between 18.5 and 25.0"/>
+                </td>                  
+		<td colspan="2" class="Columns" style="width: 100px"><strong>Overweight</strong>
+                  <img alt="" src="images/help.png" width="15" height="15" title="BMI of between 25.0 and 30.0"/>
+                </td>  
+		<td colspan="2" class="Columns" style="width: 100px"><strong>Obese</strong>
+                  <img alt="" src="images/help.png" width="15" height="15" title="BMI of between 30.0 and 35.0"/>
+                </td>  
+		<td colspan="2" class="Columns" style="width: 100px"><strong>Severely Obese</strong>
+                  <img alt="" src="images/help.png" width="15" height="15" title="BMI of between 35.0 and 40.0"/>
+                </td>  
+		<td colspan="2" class="Columns" style="width: 100px"><strong>Morbidly Obese</strong>
+                  <img alt="" src="images/help.png" width="15" height="15" title="BMI of over 40.0"/>
+                </td>  
+	</tr>
+	<tr>
+		<td class="Additional_Results_Columns" style="width: 300px">Ranges of weight categories (pounds)</td>
+		<td class="Additional_Results_UnderWeight">
+                  <% if params[:weight_kg].nil? %>
+                    <%= ((16.0 * (params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f)) / 703).round(0) %>
+                  <% end %>
+                  <% if params[:weight_lb].nil? %>
+                    <%= ((16.0 * (params[:height_cm].to_f / 2.54) * (params[:height_cm].to_f / 2.54)) / 703).round(0) %>                  
+                  <% end %>
+                </td>
+		<td class="Additional_Results_UnderWeight">
+                  <% if params[:weight_kg].nil? %>
+                    <%= ((18.5 * (params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f)) / 703).round(0) %>
+                  <% end %>
+                  <% if params[:weight_lb].nil? %>
+                    <%= ((18.5 * (params[:height_cm].to_f / 2.54) * (params[:height_cm].to_f / 2.54)) / 703).round(0) %>                  
+                  <% end %>
+                </td>
+		<td class="Additional_Results_Normal">
+                  <% if params[:weight_kg].nil? %>
+                    <%= ((18.5 * (params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f)) / 703).round(0) %>
+                  <% end %>
+                  <% if params[:weight_lb].nil? %>
+                    <%= ((18.5 * (params[:height_cm].to_f / 2.54) * (params[:height_cm].to_f / 2.54)) / 703).round(0) %>     
+                  <% end %>
+                </td>
+		<td class="Additional_Results_Normal">
+                  <% if params[:weight_kg].nil? %>
+                    <%= ((25 * (params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f)) / 703).round(0) %>
+                  <% end %>
+                  <% if params[:weight_lb].nil? %>
+                    <%= ((25 * (params[:height_cm].to_f / 2.54) * (params[:height_cm].to_f / 2.54)) / 703).round(0) %>     
+                  <% end %>                  
+                </td>
+		<td class="Additional_Results_OverWeight">
+                  <% if params[:weight_kg].nil? %>
+                    <%= ((25 * (params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f)) / 703).round(0) %>
+                  <% end %>
+                  <% if params[:weight_lb].nil? %>
+                    <%= ((25 * (params[:height_cm].to_f / 2.54) * (params[:height_cm].to_f / 2.54)) / 703).round(0) %>     
+                  <% end %>                  
+                </td>
+		<td class="Additional_Results_OverWeight">
+                  <% if params[:weight_kg].nil? %>
+                    <%= ((30 * (params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f)) / 703).round(0) %>
+                  <% end %>
+                  <% if params[:weight_lb].nil? %>
+                    <%= ((30 * (params[:height_cm].to_f / 2.54) * (params[:height_cm].to_f / 2.54)) / 703).round(0) %>     
+                  <% end %>                  
+                </td>
+		<td class="Additional_Results_Obese">
+                  <% if params[:weight_kg].nil? %>
+                    <%= ((30 * (params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f)) / 703).round(0) %>
+                  <% end %>
+                  <% if params[:weight_lb].nil? %>
+                    <%= ((30 * (params[:height_cm].to_f / 2.54) * (params[:height_cm].to_f / 2.54)) / 703).round(0) %>     
+                  <% end %>                  
+                </td>
+		<td class="Additional_Results_Obese">
+                  <% if params[:weight_kg].nil? %>
+                    <%= ((35 * (params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f)) / 703).round(0) %>
+                  <% end %>
+                  <% if params[:weight_lb].nil? %>
+                    <%= ((35 * (params[:height_cm].to_f / 2.54) * (params[:height_cm].to_f / 2.54)) / 703).round(0) %>     
+                  <% end %>                  
+                </td>
+		<td class="Additional_Results_SeverelyObese">
+                  <% if params[:weight_kg].nil? %>
+                    <%= ((35 * (params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f)) / 703).round(0) %>
+                  <% end %>
+                  <% if params[:weight_lb].nil? %>
+                    <%= ((35 * (params[:height_cm].to_f / 2.54) * (params[:height_cm].to_f / 2.54)) / 703).round(0) %>     
+                  <% end %>                  
+                </td>
+		<td class="Additional_Results_SeverelyObese">
+                  <% if params[:weight_kg].nil? %>
+                    <%= ((40 * (params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f)) / 703).round(0) %>
+                  <% end %>
+                  <% if params[:weight_lb].nil? %>
+                    <%= ((40 * (params[:height_cm].to_f / 2.54) * (params[:height_cm].to_f / 2.54)) / 703).round(0) %>     
+                  <% end %>                  
+                </td>
+		<td class="Additional_Results_MorbidlyObeseObese">
+                  <% if params[:weight_kg].nil? %>
+                    <%= ((40 * (params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f)) / 703).round(0) %>
+                  <% end %>
+                  <% if params[:weight_lb].nil? %>
+                    <%= ((40 * (params[:height_cm].to_f / 2.54) * (params[:height_cm].to_f / 2.54)) / 703).round(0) %>     
+                  <% end %>                  
+                </td>
+		<td class="Additional_Results_MorbidlyObeseObese">Greater</td>
+	</tr>
+	<tr>
+		<td class="Additional_Results_Columns" style="width: 300px">Number of people (%) in each obesity category</td>
+		<td class="Additional_Results_UnderWeight">110</td>
+		<td class="Additional_Results_UnderWeight">1%</td>
+		<td class="Additional_Results_Normal">2072</td>
+		<td class="Additional_Results_Normal">25%</td>
+		<td class="Additional_Results_OverWeight">4040</td>
+		<td class="Additional_Results_OverWeight">49%</td>
+		<td class="Additional_Results_Obese">1829</td>
+		<td class="Additional_Results_Obese">22%</td>
+		<td class="Additional_Results_SeverelyObese">176</td>
+		<td class="Additional_Results_SeverelyObese">2%</td>
+		<td class="Additional_Results_MorbidlyObeseObese">7</td>
+		<td class="Additional_Results_MorbidlyObeseObese">0%</td>
+	</tr>
+	<tr>
+		<td class="Additional_Results_Columns" style="width: 300px">Pounds (+/-) needed to reach obesity categories</td>
+		<td colspan="2" class="Additional_Results_UnderWeight">
+                  <% if params[:weight_kg].nil? %>
+                    <%= (((18.5 * (params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f)) / 703) - params[:weight_lb].to_f).round(0) %>
+                  <% end %>
+                  <% if params[:weight_lb].nil? %>
+                    <%= (((18.5 * (params[:height_cm].to_f / 2.54) * (params[:height_cm].to_f / 2.54)) / 703) - params[:weight_kg].to_f * 2.20462262).round(0)  %>     
+                  <% end %>                        
+                </td>
+		<td colspan="2" class="Additional_Results_Normal">
+                  <% if params[:weight_kg].nil? %>
+                    <%= (((25 * (params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f)) / 703) - params[:weight_lb].to_f).round(0) %>
+                  <% end %>
+                  <% if params[:weight_lb].nil? %>
+                    <%= (((25 * (params[:height_cm].to_f / 2.54) * (params[:height_cm].to_f / 2.54)) / 703) - params[:weight_kg].to_f * 2.20462262).round(0)  %>     
+                  <% end %>                        
+                </td>
+		<td colspan="2" class="Additional_Results_OverWeight">
+                  <% if params[:weight_kg].nil? %>
+                    <%= (((30 * (params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f)) / 703) - params[:weight_lb].to_f).round(0) %>
+                  <% end %>
+                  <% if params[:weight_lb].nil? %>
+                    <%= (((30 * (params[:height_cm].to_f / 2.54) * (params[:height_cm].to_f / 2.54)) / 703) - params[:weight_kg].to_f * 2.20462262).round(0)  %>     
+                  <% end %>                        
+                </td>
+		<td colspan="2" class="Additional_Results_Obese">0</td>
+		<td colspan="2" class="Additional_Results_SeverelyObese">
+                  <% if params[:weight_kg].nil? %>
+                    <%= (((35 * (params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f)) / 703) - params[:weight_lb].to_f).round(0) %>
+                  <% end %>
+                  <% if params[:weight_lb].nil? %>
+                    <%= (((35 * (params[:height_cm].to_f / 2.54) * (params[:height_cm].to_f / 2.54)) / 703) - params[:weight_kg].to_f * 2.20462262).round(0)  %>     
+                  <% end %>                        
+                </td>
+		<td colspan="2" class="Additional_Results_MorbidlyObeseObese">
+                  <% if params[:weight_kg].nil? %>
+                    <%= (((40 * (params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f)) / 703) - params[:weight_lb].to_f).round(0) %>
+                  <% end %>
+                  <% if params[:weight_lb].nil? %>
+                    <%= (((40 * (params[:height_cm].to_f / 2.54) * (params[:height_cm].to_f / 2.54)) / 703) - params[:weight_kg].to_f * 2.20462262).round(0)  %>     
+                  <% end %>                        
+                </td>
+	</tr>
+	<tr>
+		<td class="Additional_Results_Columns" style="width: 300px">Daily diet change needed to reach obesity
+		categories in a year (Calories per day (+/-))</td>
+		<td colspan="2" class="Additional_Results_UnderWeight">-200</td>
+		<td colspan="2" class="Additional_Results_Normal">-125</td>
+		<td colspan="2" class="Additional_Results_OverWeight">-50</td>
+		<td colspan="2" class="Additional_Results_Obese">0</td>
+		<td colspan="2" class="Additional_Results_SeverelyObese">+100</td>
+		<td colspan="2" class="Additional_Results_MorbidlyObeseObese">+150</td>
+	</tr>
+
+  </table>
+       
+       <!-- Results Table !--> 
+
+    </div>

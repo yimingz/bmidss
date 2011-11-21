@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/78/BmiDss/vendor/plugins/lazy_high_charts/lib/lazy_high_charts
+END
+railtie.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/78/BmiDss/vendor/plugins/lazy_high_charts/lib/lazy_high_charts/railtie.rb
+END
+version.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/78/BmiDss/vendor/plugins/lazy_high_charts/lib/lazy_high_charts/version.rb
+END
+layout_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/78/BmiDss/vendor/plugins/lazy_high_charts/lib/lazy_high_charts/layout_helper.rb
+END
+high_chart.rb
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/78/BmiDss/vendor/plugins/lazy_high_charts/lib/lazy_high_charts/high_chart.rb
+END

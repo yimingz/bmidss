@@ -1,0 +1,23 @@
+
+<%
+  require 'sqlite3'
+
+  grayBegin=4
+  basisBegin=1
+  count = 0
+  db = SQLite3::Database.new( "db/patrick.sqlite3" )
+  gray = db.get_first_row("select * from FullDataWeights where Gender='M' and Age=22 and Race='W' and Year=2008 ")
+  
+  result = []
+  db.execute( "select * from BasisGraphs where Height=66" ) do |row|
+    point = (row.at(basisBegin+1)* gray.at(grayBegin+1)) + (row.at(basisBegin+2)*gray.at(grayBegin+2)) + (row.at(basisBegin+3)*gray.at(grayBegin+3)) + (row.at(basisBegin+4)*gray.at(grayBegin+4)) + (row.at(basisBegin+5)*gray.at(grayBegin+5)) + (row.at(basisBegin+6)*gray.at(grayBegin+6)) + (row.at(basisBegin+7)*gray.at(grayBegin+7)) + (row.at(basisBegin+8)*gray.at(grayBegin+8)) 
+    count = count + 1
+  result << point    
+  end
+ %>
+<h1> Results for White 22 year old male, 66 inches </h1>
+<%= count.to_s + " records returned. Result Array follows:"%>
+<br>
+<br>
+
+<%= result.to_s %>
