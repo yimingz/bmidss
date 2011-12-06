@@ -10,7 +10,7 @@ class Bmi < ActiveRecord::Base
   #validates_numericality_of :age, :allow_nil => false
   #validates_numericality_of :weight_lb, :allow_nil => false
   
-  GENDER_LIST = [['Select...'],['Male'], ['Female']]
+  GENDER_LIST = [['Male'], ['Female']]
   RACE_LIST = [['White'],['Black'],['Other']]
   ACTIVITY_LEVEL = [['Sedentary'],['Lightly Active'],['Moderately Active'],['Very Active'],['Extra Active']]  
   FEET_LIST = [['4'],['5'],['6']]

@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 46
-/svn/!svn/ver/58/BmiDss/app/assets/stylesheets
+V 47
+/svn/!svn/ver/206/BmiDss/app/assets/stylesheets
 END
 application.css
 K 25
@@ -74,6 +74,12 @@ K 25
 svn:wc:ra_dav:version-url
 V 59
 /svn/!svn/ver/28/BmiDss/app/assets/stylesheets/prototype.js
+END
+new.css
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/206/BmiDss/app/assets/stylesheets/new.css
 END
 jquery.tabSlideOut.v1.3_1.js
 K 25

@@ -1,7 +1,11 @@
+K 26
+svn:wc:ra_dav:activity-url
+V 14
+/svn/!svn/act/
 K 25
 svn:wc:ra_dav:version-url
 V 24
-/svn/!svn/ver/185/BmiDss
+/svn/!svn/ver/213/BmiDss
 END
 Rakefile
 K 25
@@ -13,7 +17,7 @@ Gemfile
 K 25
 svn:wc:ra_dav:version-url
 V 32
-/svn/!svn/ver/186/BmiDss/Gemfile
+/svn/!svn/ver/187/BmiDss/Gemfile
 END
 README
 K 25
@@ -25,7 +29,7 @@ Gemfile.lock
 K 25
 svn:wc:ra_dav:version-url
 V 37
-/svn/!svn/ver/186/BmiDss/Gemfile.lock
+/svn/!svn/ver/187/BmiDss/Gemfile.lock
 END
 config.ru
 K 25

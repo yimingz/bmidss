@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 42
-/svn/!svn/ver/180/BmiDss/app/assets/images
+/svn/!svn/ver/211/BmiDss/app/assets/images
 END
 Greenbar_Right.jpg
 K 25
@@ -80,6 +80,12 @@ K 25
 svn:wc:ra_dav:version-url
 V 54
 /svn/!svn/ver/28/BmiDss/app/assets/images/Header_1.jpg
+END
+CMU_Logo.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/204/BmiDss/app/assets/images/CMU_Logo.jpg
 END
 graph-icon.png
 K 25
@@ -176,6 +182,12 @@ K 25
 svn:wc:ra_dav:version-url
 V 55
 /svn/!svn/ver/28/BmiDss/app/assets/images/Nav-Right.jpg
+END
+popup.png
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/211/BmiDss/app/assets/images/popup.png
 END
 newtab.jpg
 K 25

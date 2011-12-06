@@ -1,15 +1,15 @@
 10
 
 dir
-185
+213
 https://bmidss.googlecode.com/svn/BmiDss
 https://bmidss.googlecode.com/svn
 
 
 
-2011-11-20T18:53:58.112011Z
-185
-z.stockwell.cmu@gmail.com
+2011-12-05T12:57:54.799377Z
+213
+Xenthir@gmail.com
 has-props
 
 svn:special svn:externals svn:needs-lock
@@ -25,18 +25,25 @@ svn:special svn:externals svn:needs-lock
 
 
 0abcf969-6005-18f2-f73e-8cb2868daa8b
+
+
+
+
+
+
+0
 
 Gemfile
 file
-186
 
 
 
-2011-11-21T00:57:14.000000Z
-74a2e47222451457fe24e66bacc03e5d
-2011-11-21T00:57:24.654036Z
-186
-laughwithm3@gmail.com
+
+2011-11-27T03:12:26.000000Z
+228de06cbf790de546c446d011c74618
+2011-11-24T07:57:46.724731Z
+187
+alkaabi.ws
 
 
 
@@ -62,37 +69,15 @@ laughwithm3@gmail.com
 
 Gemfile.lock
 file
-186
-
-
-
-2011-11-21T00:56:57.000000Z
-57d5900580641c2a6e2a5173dd812299
-2011-11-21T00:57:24.654036Z
-186
-laughwithm3@gmail.com
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2842
+b070c1a36bf6cfb503c21dccb62495e2
+2011-11-24T07:57:46.724731Z
+187
+alkaabi.ws
 
 README
 file

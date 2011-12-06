@@ -15,49 +15,68 @@
 	});
         
 </script>
+
+<SCRIPT TYPE="text/javascript">
+<!--
+function popup(mylink, windowname)
+{
+if (! window.focus)return true;
+var href;
+if (typeof(mylink) == 'string')
+   href=mylink;
+else
+   href=mylink.href;
+window.open(href, windowname, 'width=400,height=200,scrollbars=yes');
+return false;
+}
+//-->
+</SCRIPT>
+
+
 </form>
       </br>
       </br>
-      US Standards:
+      Enter Your Information:
          </br>
             
             <div>
+              <div id="notice"><%= flash[:notice] %></div>
+                  <%= form_tag('home') do %>
               
-                  <%= form_tag('home/') do %>
-                  <ul>
-                    
-                  <%= label_tag :year %>
-                    <a rel='tipsy' title='Select the year that you want to be compared aganist'>
-                 <%= image_tag "help.png", :size => "15x15" %></a>
-                  <%= select_tag(:year,
-                  options_for_select(Bmi::YEAR_LIST, "2010")) %>
-                  </ul>
                   <ul>
                   <%= label_tag :gender %>
                   <%= select_tag(:gender,
-                  options_for_select(Bmi::GENDER_LIST, :disabled => ['Select...'])) %>
+                  options_for_select(Bmi::GENDER_LIST), :include_blank => false) %>
                   </ul>
                   <ul>
                   <%= label_tag :race %>
                   <%= select_tag(:race,
-                  options_for_select(Bmi::RACE_LIST), :prompt => "Select...") %>
-                  </ul>
-                  <ul>
-                  <%= label_tag :activity_level %>
-                  <%= select_tag(:activity_level,
-                  options_for_select(Bmi::ACTIVITY_LEVEL), :prompt => "Select...") %>
-                  </ul>                   
+                  options_for_select(Bmi::RACE_LIST), :include_blank => false) %>
+                  </ul>              
                   <ul>
                   <%= label_tag :age %>
-                  <%= number_field_tag(:age, 0, :in => 18...65) %> (18 - 65)
+                  <%= number_field_tag(:age, 18, :in => 18...66) %> (18 - 65)
                   </ul>           
                   <ul>
                   <%= label_tag :weight %>
-                  <%= number_field_tag(:weight_lb, 0, :in => 75...350)+ "lb"  %> (75 - 350)
+                  <%= number_field_tag(:weight_lb, 75, :in => 75...351)+ "lb"  %> (75 - 350)
                   </ul>
                   <ul>
                   <%= label_tag :height %>
                   <%= select_tag(:height_feet, options_for_select(Bmi::FEET_LIST, 5)) + "feet" + select_tag(:height_inch, options_for_select(Bmi::INCH_LIST)) +  "inch"%>
+                  </ul>
+                  <ul>
+                  <%= label_tag :activity_level %>
+                    <a HREF="popup.erb" onClick=" return popup(this, 'notes')"><%= image_tag "help.png", :size => "15x15" %></a>
+                  <%= select_tag(:activity_level,
+                  options_for_select(Bmi::ACTIVITY_LEVEL), :include_blank => false) %>
+                  </ul>                   
+                  <ul>                    
+                  <%= label_tag :year %>
+                    <a rel='tipsy' title='Select the year of U.S. statistics for your comparison.'>
+                 <%= image_tag "help.png", :size => "15x15" %></a>
+                  <%= select_tag(:year,
+                  options_for_select(Bmi::YEAR_LIST, "2010")) %>
                   </ul>
                   <ul>
                     <%= submit_tag("Calculate") %>

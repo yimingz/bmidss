@@ -8,7 +8,8 @@ BmiDss::Application.routes.draw do
   match 'contact' => 'home#contact', :as => :contact
   match 'patTest' => 'home#patTest', :as => :pattest
   match 'calculate' => 'bmis#calculate', :as => :calculate
-  
+  match 'popup' => 'bmis#popup', :as => :popup
+
   resources :home
   resources :bmis
   

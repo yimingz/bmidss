@@ -1,13 +1,13 @@
 K 25
 svn:wc:ra_dav:version-url
 V 42
-/svn/!svn/ver/175/BmiDss/app/views/layouts
+/svn/!svn/ver/212/BmiDss/app/views/layouts
 END
 application.html.erb
 K 25
 svn:wc:ra_dav:version-url
 V 63
-/svn/!svn/ver/174/BmiDss/app/views/layouts/application.html.erb
+/svn/!svn/ver/205/BmiDss/app/views/layouts/application.html.erb
 END
 application.html_1.erb
 K 25
@@ -19,11 +19,11 @@ main.html.erb
 K 25
 svn:wc:ra_dav:version-url
 V 56
-/svn/!svn/ver/175/BmiDss/app/views/layouts/main.html.erb
+/svn/!svn/ver/212/BmiDss/app/views/layouts/main.html.erb
 END
-main.html_1(URL).erb
+main.html_initial_intro.erb
 K 25
 svn:wc:ra_dav:version-url
-V 63
-/svn/!svn/ver/175/BmiDss/app/views/layouts/main.html_1(URL).erb
+V 70
+/svn/!svn/ver/189/BmiDss/app/views/layouts/main.html_initial_intro.erb
 END

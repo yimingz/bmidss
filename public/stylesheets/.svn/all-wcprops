@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 43
-/svn/!svn/ver/172/BmiDss/public/stylesheets
+/svn/!svn/ver/203/BmiDss/public/stylesheets
 END
 old-layout-with-resizing.html.css
 K 25
@@ -15,11 +15,11 @@ svn:wc:ra_dav:version-url
 V 58
 /svn/!svn/ver/74/BmiDss/public/stylesheets/application.css
 END
-new.css
+new1.css
 K 25
 svn:wc:ra_dav:version-url
-V 51
-/svn/!svn/ver/172/BmiDss/public/stylesheets/new.css
+V 52
+/svn/!svn/ver/203/BmiDss/public/stylesheets/new1.css
 END
 old-layout-without-resizing.css
 K 25

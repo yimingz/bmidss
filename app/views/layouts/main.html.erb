@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     
-<title>Where Do We Fit?</title>
+<title>Weigh too Much Info</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%= javascript_include_tag 'jquery-1.5.1.min.js' %>
 <%= javascript_include_tag "jquery.tipsy.js" %>
@@ -30,6 +30,13 @@ html{
 	text-shadow: 0px 1px 0px #204269;
 }
 
+.intro {
+	 font: 19px Tahoma, Helvetica, Arial, Sans-Serif;
+	 font-weight:bold;
+	color: #f7c349;
+	text-shadow: 0px 1px 0px #204269;
+}
+
 .headtitlecontent {
 	 font: 14px Tahoma, Helvetica, Arial, Sans-Serif;
 	 font-weight:lighter;
@@ -39,12 +46,17 @@ html{
 }
 
 .footer {
-	 font: 12px Tahoma, Helvetica, Arial, Sans-Serif;
+	 font: 13px Tahoma, Helvetica, Arial, Sans-Serif;
 	 text-align:center;
 	 font-weight:lighter;
 	color: #6e666e;
 
 
+}
+
+#notice {
+      font-weight: bold;
+      color: red;
 }
 
 /* Tipsy */
@@ -79,24 +91,22 @@ html{
 </td>
 		<td rowspan="4">
 		
-                        <%= image_tag "right_wing.jpg", :size => "13x551" %>
+                        <% image_tag "right_wing.jpg", :size => "13x551" %>
                 </td>
 	</tr>
 	<tr>
 		<td rowspan="2">
 			
-                        <%= image_tag "left-wing-06.jpg", :size => "1x270" %>
+                        <% image_tag "left-wing-06.jpg", :size => "1x270" %>
                 
                 </td>
 		<td style="width: 728px; height: 141px" class="style1" valign="top">
-			<strong><span class="headline1">Know where you stand!</span>&nbsp;<br />
+			<strong><span class="headline1">Discover how your weight compares in the United States!</span>&nbsp;<br />
 			<span class="headtitlecontent"><br />
-			Through our website WhereDoWeFit.com you will be 
-			able to calculate, compare, and analyze&nbsp; your Body Mass Index 
-			(BMI) as simple as entering your gender, age, race, height, and 
-			weight.<br />
-			<br />
-			Stay healthy, use WhereDoWeFit.com!</span></strong></td>
+                          <strong><span class="intro">Enter </span></strong>your own gender, race, age, weight, height, and activity level.<br>
+                          <strong><span class="intro">Compare</span></strong> yourself with the population of the U.S. by selecting a statistical year from the drop-down menu.<br>
+                          <strong><span class="intro">Calculate</span></strong> the results!<br>
+                        </span></strong></td>
 	</tr>
 	<tr>
 		<td>
@@ -106,8 +116,19 @@ html{
 	</tr>
 	<tr>
 		<td colspan="4" style="width: 1163px; height: 131px" class="footer">
-			<%= link_to 'Where Do We Fit?', main_path %> | <%= link_to 'About us', about_path %> | <%= link_to 'Contact us', contact_path %><br />
-		Copyright © 2011. Where Do We Fit - Carnegie Mellon University. All rights reserved.</td>
+			<%= link_to 'Weigh too Much Info', main_path %> | <%= link_to 'About us', about_path %> | <%= link_to 'Contact us', contact_path %><br />
+                        Copyright © 2011. Weigh Too Much Info - Carnegie Mellon University. All rights reserved.<br>
+<%= image_tag "CMU_Logo.jpg", :size => "151x26" %><br>
+                    <!-- hitwebcounter Code START -->
+<a href="http://www.hitwebcounter.com/" target="_blank">
+<img src="http://hitwebcounter.com/counter/counter.php?page=346596&style=0007&nbdigits=6&type=ip&initCount=0" title="Track Stats" Alt="Track Stats"   border="0" >
+</a>
+<br>
+<!-- hitwebcounter.com --><a href="http://www.hitwebcounter.com/internetcountercontact.php" title="Free Counter" 
+target="_blank" style="font-family: Arial, Geneva , Helvetica, sans-serif; 
+font-size: 12px; color: #848387; text-decoration: underline ;">
+</a>
+                </td>
 	</tr>
 </table>
 

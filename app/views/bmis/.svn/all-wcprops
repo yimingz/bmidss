@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 38
-/svn/!svn/ver/73/BmiDss/app/views/bmis
+V 39
+/svn/!svn/ver/199/BmiDss/app/views/bmis
 END
 new.html.erb
 K 25
@@ -14,6 +14,12 @@ K 25
 svn:wc:ra_dav:version-url
 V 52
 /svn/!svn/ver/30/BmiDss/app/views/bmis/show.html.erb
+END
+popup.erb
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/199/BmiDss/app/views/bmis/popup.erb
 END
 calcul.html.erb
 K 25

@@ -1,13 +1,13 @@
 K 25
 svn:wc:ra_dav:version-url
 V 40
-/svn/!svn/ver/179/BmiDss/app/controllers
+/svn/!svn/ver/212/BmiDss/app/controllers
 END
 home_controller.rb
 K 25
 svn:wc:ra_dav:version-url
 V 59
-/svn/!svn/ver/179/BmiDss/app/controllers/home_controller.rb
+/svn/!svn/ver/212/BmiDss/app/controllers/home_controller.rb
 END
 application_controller.rb
 K 25
@@ -24,6 +24,6 @@ END
 main_controller.rb
 K 25
 svn:wc:ra_dav:version-url
-V 58
-/svn/!svn/ver/58/BmiDss/app/controllers/main_controller.rb
+V 59
+/svn/!svn/ver/201/BmiDss/app/controllers/main_controller.rb
 END

@@ -1,7 +1,28 @@
 class HomeController < ApplicationController
+  
   def index
 
     require 'sqlite3'
+    
+    validateWeight = params[:weight_lb].to_i 
+    validateAge = params[:age].to_i
+   
+    if validateWeight < 75 || validateWeight > 350 
+      flash[:notice] = "You have to put weight. Weight should be numeric"
+      redirect_to :main
+      return
+    end
+    
+    if validateAge < 18 || validateAge > 65
+      flash[:notice] = "You have to put age. Age should be numeric"
+      redirect_to :main
+      return
+    end
+      
+      #if request.referer != request.url.split('/?')[0]
+      #   redirect_to :back
+      #end  
+   
     grayBegin=4
     basisBegin=1
     bmiBasisBegin=0
@@ -560,7 +581,7 @@ f.series(:name=>'Weights Distribution', :color=>'#F5F5F5', :type=>'area', :data=
           f.options[:chart][:inverted] = false
           f.options[:tooltip][:enabled] = true
           f.options[:legend][:layout] = "horizontal"
-          f.options[:title][:text] = 'People with the same Gender, Age, Race, and Height as you'
+          f.options[:title][:text] = 'People with your Gender, Age, Race, and Height in ' + params[:year].to_s;
 
           f.plotOptions(:series=>{:stickyTracking=>true,:animation=>{:duration=>4000,:easing=>'swing'}},
             :area=>{:marker=>{:enabled=>false}},:column=>{:groupPadding=>0,:borderWidth=>0, :marker=>{:lineWidth=>5}})
@@ -586,7 +607,7 @@ f.series(:name=>'Weights Distribution', :color=>'#F5F5F5', :type=>'area', :data=
           f.options[:chart][:inverted] = false
           f.options[:tooltip][:enabled] = true
           f.options[:legend][:layout] = "horizontal"
-          f.options[:title][:text] = 'People with the same Gender, Age, and Race as you'
+          f.options[:title][:text] = 'People with your Gender, Age, and Race in ' + params[:year].to_s;
 
                     f.plotOptions(:series=>{:stickyTracking=>true,:animation=>{:duration=>4000,:easing=>'swing'}},
             :area=>{:marker=>{:enabled=>false}},:column=>{:groupPadding=>0,:borderWidth=>0, :pointWidth=>5, :marker=>{:lineWidth=>0.1}})
@@ -595,5 +616,7 @@ f.series(:name=>'Weights Distribution', :color=>'#F5F5F5', :type=>'area', :data=
           f.tooltip(:crosshairs=>[{:color=>'green'},{:color=>'green'}])
     end
   end
+  
+  
 
 end
