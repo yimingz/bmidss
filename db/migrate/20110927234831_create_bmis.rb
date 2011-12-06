@@ -10,7 +10,7 @@ class CreateBmis < ActiveRecord::Migration
       t.integer :height_inch
       t.integer :height_feet
       t.integer :height_cm
-      t.interger :year
+      t.integer :year
 
       t.timestamps
     end
