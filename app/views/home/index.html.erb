@@ -73,9 +73,13 @@ return false;
       severe = ((40 * (params[:height_cm].to_f / 2.54) * (params[:height_cm].to_f / 2.54)) / 703).round(0)
 
     end
-    db = SQLite3::Database.new( "db/patrick.sqlite3" )
-    gray = db.get_first_row("select * from FullDataWeights where Gender='" + (gender) + "' and Age=" + params[:age].to_s + " and Race='" + (race) + "' and Year='" + params[:year].to_s + "' ")
-    db.execute( "select * from BasisGraphs where Height=" + height.to_s) do |row|
+    #db = SQLite3::Database.new( "db/patrick.sqlite3" )
+    db = PGconn.connect("localhost", 5432, '','', 'bmidss', 'postgres', "dragon")
+    
+    #gray = db.get_first_row("select * from FullDataWeights where Gender='" + (gender) + "' and Age=" + params[:age].to_s + " and Race='" + (race) + "' and Year='" + params[:year].to_s + "' ")
+    gray = db.exec("select * from FullDataWeights where Gender='" + (gender) + "' and Age=" + params[:age].to_s + " and Race='" + (race) + "' and Year='" + params[:year].to_s + "' ")
+
+    db.exec( "select * from BasisGraphs where Height=" + height.to_s) do |row|
 
 
 
@@ -100,7 +104,7 @@ return false;
     totalTotal = underTotal + normalTotal + overweightTotal + obeseTotal + severeTotal + morbidTotal
     count = 0
     bmiBasisBegin=0
-    db.execute( "select * from BMIbasis") do |row|
+    db.exec( "select * from BMIbasis") do |row|
       point = (row.at(bmiBasisBegin+1)* gray.at(grayBegin+1)) + (row.at(bmiBasisBegin+2)*gray.at(grayBegin+2)) + (row.at(bmiBasisBegin+3)*gray.at(grayBegin+3)) + (row.at(bmiBasisBegin+4)*gray.at(grayBegin+4)) + (row.at(bmiBasisBegin+5)*gray.at(grayBegin+5)) + (row.at(bmiBasisBegin+6)*gray.at(grayBegin+6)) + (row.at(bmiBasisBegin+7)*gray.at(grayBegin+7)) + (row.at(bmiBasisBegin+8)*gray.at(grayBegin+8)) 
       if (((count*0.5)+9.5) <= 18.5)
         underBMITotal = underBMITotal + Integer(point * gray.at(grayBegin))
@@ -127,13 +131,13 @@ return false;
     moreThanMe = []
     curTotal = 0
     lessThanMe << 0
-    db.execute( "select * from BasisGraphs where Height=" + height.to_s) do |row|
+    db.exec( "select * from BasisGraphs where Height=" + height.to_s) do |row|
       point = (row.at(basisBegin+1)* gray.at(grayBegin+1)) + (row.at(basisBegin+2)*gray.at(grayBegin+2)) + (row.at(basisBegin+3)*gray.at(grayBegin+3)) + (row.at(basisBegin+4)*gray.at(grayBegin+4)) + (row.at(basisBegin+5)*gray.at(grayBegin+5)) + (row.at(basisBegin+6)*gray.at(grayBegin+6)) + (row.at(basisBegin+7)*gray.at(grayBegin+7)) + (row.at(basisBegin+8)*gray.at(grayBegin+8)) 
       curTotal = curTotal + Integer(point * gray.at(grayBegin))
       lessThanMe << curTotal
     end
 
-    db.execute( "select * from BasisGraphs where Height=" + height.to_s) do |row|
+    db.exec( "select * from BasisGraphs where Height=" + height.to_s) do |row|
       point = (row.at(basisBegin+1)* gray.at(grayBegin+1)) + (row.at(basisBegin+2)*gray.at(grayBegin+2)) + (row.at(basisBegin+3)*gray.at(grayBegin+3)) + (row.at(basisBegin+4)*gray.at(grayBegin+4)) + (row.at(basisBegin+5)*gray.at(grayBegin+5)) + (row.at(basisBegin+6)*gray.at(grayBegin+6)) + (row.at(basisBegin+7)*gray.at(grayBegin+7)) + (row.at(basisBegin+8)*gray.at(grayBegin+8)) 
       curTotal = curTotal - Integer(point * gray.at(grayBegin))		
       moreThanMe << curTotal
@@ -143,12 +147,12 @@ return false;
     moreThanMeBMI = []
     curBMITotal = 0
     lessThanMe << 0
-    db.execute( "select * from BMIbasis") do |row|
+    db.exec( "select * from BMIbasis") do |row|
       point = (row.at(bmiBasisBegin+1)* gray.at(grayBegin+1)) + (row.at(bmiBasisBegin+2)*gray.at(grayBegin+2)) + (row.at(bmiBasisBegin+3)*gray.at(grayBegin+3)) + (row.at(bmiBasisBegin+4)*gray.at(grayBegin+4)) + (row.at(bmiBasisBegin+5)*gray.at(grayBegin+5)) + (row.at(bmiBasisBegin+6)*gray.at(grayBegin+6)) + (row.at(bmiBasisBegin+7)*gray.at(grayBegin+7)) + (row.at(bmiBasisBegin+8)*gray.at(grayBegin+8)) 
       curBMITotal = curBMITotal + Integer(point * gray.at(grayBegin))
       lessThanMeBMI << curBMITotal
     end
-    db.execute( "select * from BMIbasis") do |row|
+    db.exec( "select * from BMIbasis") do |row|
       point = (row.at(bmiBasisBegin+1)* gray.at(grayBegin+1)) + (row.at(bmiBasisBegin+2)*gray.at(grayBegin+2)) + (row.at(bmiBasisBegin+3)*gray.at(grayBegin+3)) + (row.at(bmiBasisBegin+4)*gray.at(grayBegin+4)) + (row.at(bmiBasisBegin+5)*gray.at(grayBegin+5)) + (row.at(bmiBasisBegin+6)*gray.at(grayBegin+6)) + (row.at(bmiBasisBegin+7)*gray.at(grayBegin+7)) + (row.at(bmiBasisBegin+8)*gray.at(grayBegin+8)) 
       curBMITotal = curBMITotal - Integer(point * gray.at(grayBegin))
       moreThanMeBMI << curBMITotal
