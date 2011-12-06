@@ -21,6 +21,12 @@ svn:wc:ra_dav:version-url
 V 56
 /svn/!svn/ver/212/BmiDss/app/views/layouts/main.html.erb
 END
+main.html_1(URL).erb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/214/BmiDss/app/views/layouts/main.html_1(URL).erb
+END
 main.html_initial_intro.erb
 K 25
 svn:wc:ra_dav:version-url

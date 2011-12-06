@@ -7,5 +7,5 @@ END
 K 25
 svn:wc:ra_dav:version-url
 V 65
-/svn/!svn/ver/129/BmiDss/db/migrate/20110927234831_create_bmis.rb
+/svn/!svn/ver/214/BmiDss/db/migrate/20110927234831_create_bmis.rb
 END

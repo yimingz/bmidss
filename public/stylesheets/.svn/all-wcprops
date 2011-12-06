@@ -15,6 +15,12 @@ svn:wc:ra_dav:version-url
 V 58
 /svn/!svn/ver/74/BmiDss/public/stylesheets/application.css
 END
+new.css
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/214/BmiDss/public/stylesheets/new.css
+END
 new1.css
 K 25
 svn:wc:ra_dav:version-url
