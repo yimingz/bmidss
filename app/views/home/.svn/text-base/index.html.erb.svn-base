@@ -8,7 +8,7 @@ if (typeof(mylink) == 'string')
    href=mylink;
 else
    href=mylink.href;
-window.open(href, windowname, 'width=400,height=200,scrollbars=yes');
+window.open(href, windowname, 'width=1200,height=400,scrollbars=yes');
 return false;
 }
 //-->
@@ -2136,6 +2136,7 @@ return false;
               <% end %>  
     <!-- Results Table !--> 
   </div>
+  <!-- Here starts the next section for the BMI tab !-->
   <div id="fragment-3">
     <!-- First Results Table: Start !-->
     <table style="width: 100%">
@@ -2202,7 +2203,7 @@ return false;
       <tr>
         <td style="width: 300px">&nbsp;</td>
         <% if ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))) < 18.5 %>
-          <td colspan="2" class="Columns" style="width: 100px; color: #FFFFFF ; background: #d64624"><strong>Underweight</strong>
+          <td colspan="2" class="Columns" style="width: 100px; color: #FFFFFF ; background: #d4d624"><strong>Underweight</strong>
             <a rel='tipsy' href='#' title='BMI less than 18.5'>
               <%= image_tag "help.png", :size => "15x15" %></a>
           </td>
@@ -2215,7 +2216,7 @@ return false;
 
         <% if ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))) < 25 && 
             ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))) > 18.5 %>                  
-          <td colspan="2" class="Columns" style="width: 100px; color: #FFFFFF ; background: #d64624" ><strong>Normal</strong>
+          <td colspan="2" class="Columns" style="width: 100px; color: #FFFFFF ; background: #9dd624" ><strong>Normal</strong>
             <a rel='tipsy' href='#' title='BMI between 18.5 and 25.0'>
               <%= image_tag "help.png", :size => "15x15" %></a>
           </td>
@@ -2228,7 +2229,7 @@ return false;
 
         <% if ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))) < 30 && 
             ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))) > 25 %>                  
-          <td colspan="2" class="Columns" style="width: 100px; color: #FFFFFF ; background: #d64624"><strong>Overweight</strong>
+          <td colspan="2" class="Columns" style="width: 100px; color: #FFFFFF ; background: #d66f24"><strong>Overweight</strong>
             <a rel='tipsy' href='#' title='BMI between 25.0 and 30.0'>
               <%= image_tag "help.png", :size => "15x15" %></a>
           </td>
@@ -2254,7 +2255,7 @@ return false;
 
         <% if ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))) < 40 && 
             ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))) > 35 %>                  
-          <td colspan="2" class="Columns" style="width: 100px; color: #FFFFFF ; background: #d64624"><strong>Severely Obese</strong>
+          <td colspan="2" class="Columns" style="width: 100px; color: #FFFFFF ; background: #d62424"><strong>Severely Obese</strong>
             <a rel='tipsy' href='#' title='BMI between 35.0 and 40.0'>
               <%= image_tag "help.png", :size => "15x15" %></a>
           </td>  
@@ -2266,7 +2267,7 @@ return false;
         <% end %>
 
         <% if ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))) > 40 %>                
-          <td colspan="2" class="Columns" style="width: 100px; color: #FFFFFF ; background: #d64624"><strong>Morbidly Obese</strong>
+          <td colspan="2" class="Columns" style="width: 100px; color: #FFFFFF ; background: #000000"><strong>Morbidly Obese</strong>
             <a rel='tipsy' href='#' title='BMI over 40.0'>
               <%= image_tag "help.png", :size => "15x15" %></a>
           </td>
@@ -2304,7 +2305,7 @@ return false;
 
     </table>
 
-    <!-- Results Table !--> 
+    <!-- This section creates the textual description of the individual's results with if/else statements based on their BMI. !-->
     
     <br><strong class="Info-Pane-Titles">Do I have a healthy body weight?</strong><br>
                         <br />

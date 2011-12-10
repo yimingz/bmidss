@@ -4,29 +4,35 @@ class HomeController < ApplicationController
 
     require 'sqlite3'
     
+    #These are the variables for weight and age.
     validateWeight = params[:weight_lb].to_i 
     validateAge = params[:age].to_i
    
+    #Because the graphs were built and the databases optimized for the 
+    #75- 350 weight range, the following method validates that the value
+    #exists and is within this range.
     if validateWeight < 75 || validateWeight > 350 
       flash[:notice] = "You have to put weight. Weight should be numeric"
       redirect_to :main
       return
     end
     
+    #Because the graphs were built and the databases optimized for the 
+    #18-65 age range, the following method validates that the value
+    #exists and is within this range.
     if validateAge < 18 || validateAge > 65
       flash[:notice] = "You have to put age. Age should be numeric"
       redirect_to :main
       return
     end
       
-      #if request.referer != request.url.split('/?')[0]
-      #   redirect_to :back
-      #end  
+      
    
     grayBegin=4
     basisBegin=1
     bmiBasisBegin=0
     count = 0
+   #The integer variables for gender and race used for the database.
     genderString = params[:gender]
     raceString = params[:race]
     gender = genderString[0]
@@ -35,7 +41,7 @@ class HomeController < ApplicationController
     gray = db.get_first_row("select * from FullDataWeights where Gender='" + (gender) + "' and Age=" + params[:age].to_s + " and Race='" + (race) + "' and Year='" + params[:year].to_s + "' ")
   
 
-    
+ #Param conversions for database usage.   
     if params[:weight_kg].nil? 
       underweight = ((18.5 * (params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f)) / 703).round(0)    
       normal = ((25 * (params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f)) / 703).round(0)
@@ -80,6 +86,7 @@ class HomeController < ApplicationController
     severeBMITotal = 0
     morbidBMITotal = 0
       
+#Converts height all into inches.    
   if(params[:height_inch] != nil) #we are in US 
     height = Integer(params[:height_feet])
     height = height * 12
@@ -99,7 +106,7 @@ class HomeController < ApplicationController
       current << (count+75)
       curYours << (count+75)
 
-
+#Interaction with the database for weight.
       if(Integer(params[:weight_lb]) != count+75)
         curYours << 0
         point = (row.at(basisBegin+1)* gray.at(grayBegin+1)) + (row.at(basisBegin+2)*gray.at(grayBegin+2)) + (row.at(basisBegin+3)*gray.at(grayBegin+3)) + (row.at(basisBegin+4)*gray.at(grayBegin+4)) + (row.at(basisBegin+5)*gray.at(grayBegin+5)) + (row.at(basisBegin+6)*gray.at(grayBegin+6)) + (row.at(basisBegin+7)*gray.at(grayBegin+7)) + (row.at(basisBegin+8)*gray.at(grayBegin+8)) 
@@ -199,7 +206,7 @@ class HomeController < ApplicationController
       result << current
     end
     
-     #BMI RESULTS   
+     #Calculation for individual's BMI
   
       height = Integer(params[:height_feet])
       height = height * 12
@@ -225,7 +232,7 @@ class HomeController < ApplicationController
         currentBMI << ((count*0.5)+9.5)
         yourCurBMI << ((count*0.5)+9.5)
 
-
+#Determining the points that will fall under each BMI category
         if(bmi != ((count*0.5)+9.5))
           yourCurBMI << 0
           point = (row.at(bmiBasisBegin+1)* gray.at(grayBegin+1)) + (row.at(bmiBasisBegin+2)*gray.at(grayBegin+2)) + (row.at(bmiBasisBegin+3)*gray.at(grayBegin+3)) + (row.at(bmiBasisBegin+4)*gray.at(grayBegin+4)) + (row.at(bmiBasisBegin+5)*gray.at(grayBegin+5)) + (row.at(bmiBasisBegin+6)*gray.at(grayBegin+6)) + (row.at(bmiBasisBegin+7)*gray.at(grayBegin+7)) + (row.at(bmiBasisBegin+8)*gray.at(grayBegin+8)) 
@@ -440,7 +447,7 @@ class HomeController < ApplicationController
     result << current   
     end
 
-     #BMI RESULTS   
+     #Determines where you fit via BMI.
      
       bmiResult = []
       yourBMI = []
@@ -568,6 +575,7 @@ f.series(:name=>'Weights Distribution', :color=>'#F5F5F5', :type=>'area', :data=
        f.series(:name=>'Morbidly obese', :color=>'#000000',:type=>'area', :data=> morbidArray )
        f.series(:name=>'Your Weight', :color=>'#4c8ed3',:type=>'column', :data=> yours )
        
+      # The graph with the classy blue colors.      
 #       f.series(:name=>'Weights Distribution', :color=>'#F5F5F5', :type=>'area', :data=>result)
 #       f.series(:name=>'Underweight', :color=>'#56a1ef',:type=>'area', :data=> underArray )
 #       f.series(:name=>'Normal', :color=>'#4c8ed3',:type=>'area', :data=> normalArray )
@@ -577,6 +585,7 @@ f.series(:name=>'Weights Distribution', :color=>'#F5F5F5', :type=>'area', :data=
 #       f.series(:name=>'Morbidly obese', :color=>'#1f3a56',:type=>'area', :data=> morbidArray )
 #       f.series(:name=>'Your Weight', :color=>'#D64524',:type=>'column', :data=> yours )
        
+        #Graph options
           f.options[:chart][:width] = '1080'  
           f.options[:chart][:inverted] = false
           f.options[:tooltip][:enabled] = true
@@ -591,7 +600,7 @@ f.series(:name=>'Weights Distribution', :color=>'#F5F5F5', :type=>'area', :data=
           f.xAxis(:title=>{:text=>'Weight'})
           f.tooltip(:crosshairs=>[{:color=>'green'},{:color=>'green'}])
     end
-#    BMI Chart
+#    BMI companion table
         @h2 = LazyHighCharts::HighChart.new('graph') do |f| 
           f.series(:name=>'BMIs Distribution', :type=>'area', :color=>'#F5F5F5', :data=>bmiResult)
           f.series(:name=>'Underweight', :color=>'#d4d624',:type=>'area', :data=> underBMIArray )

@@ -1,4 +1,6 @@
+<!-- This page is the front page of the website !-->
 <form>
+  <!--This section contains the pretty pictures on the left hand section of the page !-->
 <script type='text/javascript'>
 	$(function() {
     $('#north').tipsy({gravity: 'n', fade: true});
@@ -26,7 +28,7 @@ if (typeof(mylink) == 'string')
    href=mylink;
 else
    href=mylink.href;
-window.open(href, windowname, 'width=400,height=200,scrollbars=yes');
+window.open(href, windowname, 'width=1200,height=400,scrollbars=yes');
 return false;
 }
 //-->
@@ -35,7 +37,7 @@ return false;
 
 </form>
       </br>
-      </br>
+      </br><!--The panel for user inputs !-->
       Enter Your Information:
          </br>
             
@@ -65,12 +67,12 @@ return false;
                   <%= label_tag :height %>
                   <%= select_tag(:height_feet, options_for_select(Bmi::FEET_LIST, 5)) + "feet" + select_tag(:height_inch, options_for_select(Bmi::INCH_LIST)) +  "inch"%>
                   </ul>
-                  <ul>
-                  <%= label_tag :activity_level %>
-                    <a HREF="popup.erb" onClick=" return popup(this, 'notes')"><%= image_tag "popup_icon.gif", :size => "15x15" %></a>
-                  <%= select_tag(:activity_level,
-                  options_for_select(Bmi::ACTIVITY_LEVEL), :include_blank => false) %>
-                  </ul>                   
+          <ul>
+            <%= label_tag :activity_level %>
+              <a HREF="/popup.html" onClick="return popup(this, 'notes')"><%= image_tag "popup_icon.gif", :size => "15x15" %></a>
+            <%= select_tag(:activity_level,
+            options_for_select(Bmi::ACTIVITY_LEVEL), :include_blank => false) %>
+          </ul>                       
                   <ul>                    
                   <%= label_tag :year %>
                     <a rel='tipsy' title='Select the year of U.S. statistics for your comparison.'>
