@@ -1,0 +1,129 @@
+  [1m[36m (0.3ms)[0m  [1mSET search_path TO public[0m
+Unable to load home, underlying cause No such file to load -- home 
+
+ /Users/laughwithm3/.rvm/gems/ruby-1.9.2-p180/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:306:in `rescue in depend_on'
+/Users/laughwithm3/.rvm/gems/ruby-1.9.2-p180/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:301:in `depend_on'
+/Users/laughwithm3/.rvm/gems/ruby-1.9.2-p180/gems/activesupport-3.1.0/lib/active_support/dependencies.rb:214:in `require_dependency'
+/Users/laughwithm3/.rvm/gems/ruby-1.9.2-p180/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:813:in `try_to_load_dependency'
+/Users/laughwithm3/.rvm/gems/ruby-1.9.2-p180/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:828:in `block in require_fixture_classes'
+/Users/laughwithm3/.rvm/gems/ruby-1.9.2-p180/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `each'
+/Users/laughwithm3/.rvm/gems/ruby-1.9.2-p180/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:825:in `require_fixture_classes'
+/Users/laughwithm3/.rvm/gems/ruby-1.9.2-p180/gems/activerecord-3.1.0/lib/active_record/fixtures.rb:808:in `fixtures'
+/Users/laughwithm3/NetBeansProjects/BmiDss/test/test_helper.rb:10:in `<class:TestCase>'
+/Users/laughwithm3/NetBeansProjects/BmiDss/test/test_helper.rb:5:in `<top (required)>'
+/Users/laughwithm3/NetBeansProjects/BmiDss/test/functional/bmis_controller_test.rb:1:in `require'
+/Users/laughwithm3/NetBeansProjects/BmiDss/test/functional/bmis_controller_test.rb:1:in `<top (required)>'
+/Users/laughwithm3/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/rake_test_loader.rb:9:in `require'
+/Users/laughwithm3/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/rake_test_loader.rb:9:in `block (2 levels) in <main>'
+/Users/laughwithm3/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/rake_test_loader.rb:9:in `each'
+/Users/laughwithm3/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/rake_test_loader.rb:9:in `block in <main>'
+/Users/laughwithm3/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/rake_test_loader.rb:5:in `each'
+/Users/laughwithm3/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/rake_test_loader.rb:5:in `<main>'
+  [1m[35m (0.9ms)[0m  ALTER TABLE "BMIbasis" DISABLE TRIGGER ALL;ALTER TABLE "BasisGraphs" DISABLE TRIGGER ALL;ALTER TABLE "FullDataWeights" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "bmis" DISABLE TRIGGER ALL
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.8ms)[0m  DELETE FROM "bmis"
+  [1m[36mFixture Insert (28.2ms)[0m  [1mINSERT INTO "bmis" ("age", "race", "gender", "weight_lb", "weight_kg", "height_inch", "height_feet", "height_cm", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 1, 1, 1, 1, 1, '2011-12-06 05:03:09', '2011-12-06 05:03:09', 980190962)[0m
+  [1m[35mFixture Insert (0.4ms)[0m  INSERT INTO "bmis" ("age", "race", "gender", "weight_lb", "weight_kg", "height_inch", "height_feet", "height_cm", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 1, 1, 1, 1, 1, '2011-12-06 05:03:09', '2011-12-06 05:03:09', 298486374)
+  [1m[36mFixture Delete (0.5ms)[0m  [1mDELETE FROM "homes"[0m
+PGError: ERROR:  relation "homes" does not exist
+LINE 1: DELETE FROM "homes"
+                    ^
+: DELETE FROM "homes"
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "BMIbasis" ENABLE TRIGGER ALL;ALTER TABLE "BasisGraphs" ENABLE TRIGGER ALL;ALTER TABLE "FullDataWeights" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "bmis" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "BMIbasis" DISABLE TRIGGER ALL;ALTER TABLE "BasisGraphs" DISABLE TRIGGER ALL;ALTER TABLE "FullDataWeights" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "bmis" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.4ms)[0m  DELETE FROM "bmis"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "bmis" ("age", "race", "gender", "weight_lb", "weight_kg", "height_inch", "height_feet", "height_cm", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 1, 1, 1, 1, 1, '2011-12-06 05:03:09', '2011-12-06 05:03:09', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "bmis" ("age", "race", "gender", "weight_lb", "weight_kg", "height_inch", "height_feet", "height_cm", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 1, 1, 1, 1, 1, '2011-12-06 05:03:09', '2011-12-06 05:03:09', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "homes"[0m
+PGError: ERROR:  relation "homes" does not exist
+LINE 1: DELETE FROM "homes"
+                    ^
+: DELETE FROM "homes"
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "BMIbasis" ENABLE TRIGGER ALL;ALTER TABLE "BasisGraphs" ENABLE TRIGGER ALL;ALTER TABLE "FullDataWeights" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "bmis" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "BMIbasis" DISABLE TRIGGER ALL;ALTER TABLE "BasisGraphs" DISABLE TRIGGER ALL;ALTER TABLE "FullDataWeights" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "bmis" DISABLE TRIGGER ALL
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "bmis"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "bmis" ("age", "race", "gender", "weight_lb", "weight_kg", "height_inch", "height_feet", "height_cm", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 1, 1, 1, 1, 1, '2011-12-06 05:03:09', '2011-12-06 05:03:09', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "bmis" ("age", "race", "gender", "weight_lb", "weight_kg", "height_inch", "height_feet", "height_cm", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 1, 1, 1, 1, 1, '2011-12-06 05:03:09', '2011-12-06 05:03:09', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "homes"[0m
+PGError: ERROR:  relation "homes" does not exist
+LINE 1: DELETE FROM "homes"
+                    ^
+: DELETE FROM "homes"
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "BMIbasis" ENABLE TRIGGER ALL;ALTER TABLE "BasisGraphs" ENABLE TRIGGER ALL;ALTER TABLE "FullDataWeights" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "bmis" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "BMIbasis" DISABLE TRIGGER ALL;ALTER TABLE "BasisGraphs" DISABLE TRIGGER ALL;ALTER TABLE "FullDataWeights" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "bmis" DISABLE TRIGGER ALL
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "bmis"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "bmis" ("age", "race", "gender", "weight_lb", "weight_kg", "height_inch", "height_feet", "height_cm", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 1, 1, 1, 1, 1, '2011-12-06 05:03:09', '2011-12-06 05:03:09', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "bmis" ("age", "race", "gender", "weight_lb", "weight_kg", "height_inch", "height_feet", "height_cm", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 1, 1, 1, 1, 1, '2011-12-06 05:03:09', '2011-12-06 05:03:09', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "homes"[0m
+PGError: ERROR:  relation "homes" does not exist
+LINE 1: DELETE FROM "homes"
+                    ^
+: DELETE FROM "homes"
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "BMIbasis" ENABLE TRIGGER ALL;ALTER TABLE "BasisGraphs" ENABLE TRIGGER ALL;ALTER TABLE "FullDataWeights" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "bmis" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "BMIbasis" DISABLE TRIGGER ALL;ALTER TABLE "BasisGraphs" DISABLE TRIGGER ALL;ALTER TABLE "FullDataWeights" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "bmis" DISABLE TRIGGER ALL
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "bmis"
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO "bmis" ("age", "race", "gender", "weight_lb", "weight_kg", "height_inch", "height_feet", "height_cm", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 1, 1, 1, 1, 1, '2011-12-06 05:03:09', '2011-12-06 05:03:09', 980190962)[0m
+  [1m[35mFixture Insert (1.8ms)[0m  INSERT INTO "bmis" ("age", "race", "gender", "weight_lb", "weight_kg", "height_inch", "height_feet", "height_cm", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 1, 1, 1, 1, 1, '2011-12-06 05:03:09', '2011-12-06 05:03:09', 298486374)
+  [1m[36mFixture Delete (0.4ms)[0m  [1mDELETE FROM "homes"[0m
+PGError: ERROR:  relation "homes" does not exist
+LINE 1: DELETE FROM "homes"
+                    ^
+: DELETE FROM "homes"
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "BMIbasis" ENABLE TRIGGER ALL;ALTER TABLE "BasisGraphs" ENABLE TRIGGER ALL;ALTER TABLE "FullDataWeights" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "bmis" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "BMIbasis" DISABLE TRIGGER ALL;ALTER TABLE "BasisGraphs" DISABLE TRIGGER ALL;ALTER TABLE "FullDataWeights" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "bmis" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "bmis"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "bmis" ("age", "race", "gender", "weight_lb", "weight_kg", "height_inch", "height_feet", "height_cm", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 1, 1, 1, 1, 1, '2011-12-06 05:03:09', '2011-12-06 05:03:09', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "bmis" ("age", "race", "gender", "weight_lb", "weight_kg", "height_inch", "height_feet", "height_cm", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 1, 1, 1, 1, 1, '2011-12-06 05:03:09', '2011-12-06 05:03:09', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "homes"[0m
+PGError: ERROR:  relation "homes" does not exist
+LINE 1: DELETE FROM "homes"
+                    ^
+: DELETE FROM "homes"
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "BMIbasis" ENABLE TRIGGER ALL;ALTER TABLE "BasisGraphs" ENABLE TRIGGER ALL;ALTER TABLE "FullDataWeights" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "bmis" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "BMIbasis" DISABLE TRIGGER ALL;ALTER TABLE "BasisGraphs" DISABLE TRIGGER ALL;ALTER TABLE "FullDataWeights" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "bmis" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "bmis"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "bmis" ("age", "race", "gender", "weight_lb", "weight_kg", "height_inch", "height_feet", "height_cm", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 1, 1, 1, 1, 1, '2011-12-06 05:03:09', '2011-12-06 05:03:09', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "bmis" ("age", "race", "gender", "weight_lb", "weight_kg", "height_inch", "height_feet", "height_cm", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 1, 1, 1, 1, 1, '2011-12-06 05:03:09', '2011-12-06 05:03:09', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "homes"[0m
+PGError: ERROR:  relation "homes" does not exist
+LINE 1: DELETE FROM "homes"
+                    ^
+: DELETE FROM "homes"
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "BMIbasis" ENABLE TRIGGER ALL;ALTER TABLE "BasisGraphs" ENABLE TRIGGER ALL;ALTER TABLE "FullDataWeights" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "bmis" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "BMIbasis" DISABLE TRIGGER ALL;ALTER TABLE "BasisGraphs" DISABLE TRIGGER ALL;ALTER TABLE "FullDataWeights" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "bmis" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "bmis"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "bmis" ("age", "race", "gender", "weight_lb", "weight_kg", "height_inch", "height_feet", "height_cm", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 1, 1, 1, 1, 1, '2011-12-06 05:03:09', '2011-12-06 05:03:09', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "bmis" ("age", "race", "gender", "weight_lb", "weight_kg", "height_inch", "height_feet", "height_cm", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 1, 1, 1, 1, 1, '2011-12-06 05:03:09', '2011-12-06 05:03:09', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "homes"[0m
+PGError: ERROR:  relation "homes" does not exist
+LINE 1: DELETE FROM "homes"
+                    ^
+: DELETE FROM "homes"
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "BMIbasis" ENABLE TRIGGER ALL;ALTER TABLE "BasisGraphs" ENABLE TRIGGER ALL;ALTER TABLE "FullDataWeights" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "bmis" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "BMIbasis" DISABLE TRIGGER ALL;ALTER TABLE "BasisGraphs" DISABLE TRIGGER ALL;ALTER TABLE "FullDataWeights" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "bmis" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "bmis"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "bmis" ("age", "race", "gender", "weight_lb", "weight_kg", "height_inch", "height_feet", "height_cm", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 1, 1, 1, 1, 1, '2011-12-06 05:03:09', '2011-12-06 05:03:09', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "bmis" ("age", "race", "gender", "weight_lb", "weight_kg", "height_inch", "height_feet", "height_cm", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 1, 1, 1, 1, 1, '2011-12-06 05:03:09', '2011-12-06 05:03:09', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "homes"[0m
+PGError: ERROR:  relation "homes" does not exist
+LINE 1: DELETE FROM "homes"
+                    ^
+: DELETE FROM "homes"
+  [1m[35m (1.5ms)[0m  ROLLBACK
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "BMIbasis" ENABLE TRIGGER ALL;ALTER TABLE "BasisGraphs" ENABLE TRIGGER ALL;ALTER TABLE "FullDataWeights" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "bmis" ENABLE TRIGGER ALL[0m

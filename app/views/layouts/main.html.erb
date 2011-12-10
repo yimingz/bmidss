@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%= javascript_include_tag 'jquery-1.5.1.min.js' %>
 <%= javascript_include_tag "jquery.tipsy.js" %>
+
 <style>
 html{
 	background: url(images/right_wing.jpg) repeat-x top center fixed;
@@ -91,13 +92,13 @@ html{
 </td>
 		<td rowspan="4">
 		
-                        <% image_tag "right_wing.jpg", :size => "13x551" %>
+                        <%= image_tag "right_wing.jpg", :size => "13x551" %>
                 </td>
 	</tr>
 	<tr>
 		<td rowspan="2">
 			
-                        <% image_tag "left-wing-06.jpg", :size => "1x270" %>
+                        <%= image_tag "left-wing-06.jpg", :size => "1x270" %>
                 
                 </td>
 		<td style="width: 728px; height: 141px" class="style1" valign="top">
@@ -118,7 +119,7 @@ html{
 		<td colspan="4" style="width: 1163px; height: 131px" class="footer">
 			<%= link_to 'Weigh too Much Info', main_path %> | <%= link_to 'About us', about_path %> | <%= link_to 'Contact us', contact_path %><br />
                         Copyright © 2011. Weigh Too Much Info - Carnegie Mellon University. All rights reserved.<br>
-<%= image_tag "CMU_Logo.jpg", :size => "151x26" %><br>
+<a href="http://www.cmu.edu"><%= image_tag "CMU_Logo.jpg", :size => "151x26" %></a><br>
                     <!-- hitwebcounter Code START -->
 <a href="http://www.hitwebcounter.com/" target="_blank">
 <img src="http://hitwebcounter.com/counter/counter.php?page=346596&style=0007&nbdigits=6&type=ip&initCount=0" title="Track Stats" Alt="Track Stats"   border="0" >

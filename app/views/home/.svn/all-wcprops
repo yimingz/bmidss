@@ -1,13 +1,13 @@
 K 25
 svn:wc:ra_dav:version-url
 V 39
-/svn/!svn/ver/213/BmiDss/app/views/home
+/svn/!svn/ver/223/BmiDss/app/views/home
 END
 contact.html.erb
 K 25
 svn:wc:ra_dav:version-url
 V 56
-/svn/!svn/ver/209/BmiDss/app/views/home/contact.html.erb
+/svn/!svn/ver/219/BmiDss/app/views/home/contact.html.erb
 END
 wonku.html.erb
 K 25
@@ -25,7 +25,7 @@ about.html.erb
 K 25
 svn:wc:ra_dav:version-url
 V 54
-/svn/!svn/ver/208/BmiDss/app/views/home/about.html.erb
+/svn/!svn/ver/219/BmiDss/app/views/home/about.html.erb
 END
 popup.erb
 K 25
@@ -61,5 +61,5 @@ index.html.erb
 K 25
 svn:wc:ra_dav:version-url
 V 54
-/svn/!svn/ver/213/BmiDss/app/views/home/index.html.erb
+/svn/!svn/ver/223/BmiDss/app/views/home/index.html.erb
 END

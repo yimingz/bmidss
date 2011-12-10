@@ -319,7 +319,7 @@ return false;
         <!-- This section is where the chart distribution is inserted into this view. !-->
         <div>
           <%= high_chart("my_id", @h) do |c| %>                
-            <%= "options.tooltip.formatter = function() { return ' There are ' + this.y +' people in this peer group that are ' +this.x+ ' lbs; ' +Math.round(moreThanMe[this.x-75]/totalTotal*100)+ '% of this peer group are heavier' +', ' +Math.round(lessThanMe[this.x-75]/totalTotal*100)+ '% of this peer group are lighter.';}" %>	
+            <%= "options.tooltip.formatter = function() { return ' There are ' + this.y +' people in this peer group that are ' +this.x+ ' lbs; '+Math.round(moreThanMe[this.x-75]/totalTotal*100)+ '% of this peer group are heavier' +', ' +Math.round(lessThanMe[this.x-75]/totalTotal*100)+ '% of this peer group are lighter.';}" %>	
 
 
           <%end %>		                     
@@ -588,7 +588,7 @@ return false;
         is calculated to display the daily calories added or subtracted from the
         individual's current intake to reach this new category. This is also based
         on the activity level which was submitted on the front page.!-->
-        <td class="Additional_Results_Columns" style="width: 300px">Daily calories per day needed to reach weight categories in a year (%)</td>
+        <td class="Additional_Results_Columns" style="width: 300px">Daily calories needed to reach weight categories in a year (%)</td>
         <td colspan="2" class="Additional_Results_UnderWeight">
           <% if params[:weight_kg].nil? %>
             <% if params[:gender] == "Male" %>
@@ -2104,7 +2104,36 @@ return false;
       </tr>
 
     </table>
-
+    <br><strong class="Info-Pane-Titles">Do I have a healthy body weight?</strong><br>
+                        <br />
+              <% if ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))) < 18.5 %>             
+                        <span class="Info-Pane-Contents">You are underweight. You have a BMI of <%=  ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))).round(1) %>
+                and a person with a BMI of 18.5 or less is considered to be underweight.</span>          
+              <% end %>                          
+              <% if ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))) < 25 && 
+                  ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))) > 18.5 %>             
+                        <span class="Info-Pane-Contents">You have a healthy body weight. You have a BMI of <%=  ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))).round(1) %>
+                and a person with a BMI of 18.5 to 25.0 is considered to be at a healthy weight. </span>
+              <% end %>
+              <% if ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))) < 30 && 
+                  ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))) > 25 %>             
+                        <span class="Info-Pane-Contents">You are overweight. You have a BMI of <%=  ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))).round(1) %>
+                and a person with a BMI of 25.0 to 30.0 is considered to be overweight.</span>          
+              <% end %>
+              <% if ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))) < 35 && 
+                  ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))) > 30 %>             
+                        <span class="Info-Pane-Contents">You are obese. You have a BMI of <%=  ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))).round(1) %>
+                and a person with a BMI of 30.0 to 35.0 is considered to be obese.</span>          
+              <% end %>    
+              <% if ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))) < 40 && 
+                  ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))) > 35 %>             
+                        <span class="Info-Pane-Contents">You are severely obese. You have a BMI of <%=  ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))).round(1) %>
+                and a person with a BMI of 35.0 to 40.0 is considered to be severely obese.</span>          
+              <% end %> 
+              <% if ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))) > 40 %>             
+                        <span class="Info-Pane-Contents">You are morbidly obese. You have a BMI of <%=  ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))).round(1) %>
+                and a person with a BMI of 40 or above is considered to be morbidly obese. This can increase a person's risk of death from any cause by 50% to 150%.</span>          
+              <% end %>  
     <!-- Results Table !--> 
   </div>
   <div id="fragment-3">
@@ -2277,7 +2306,36 @@ return false;
 
     <!-- Results Table !--> 
     
-    
+    <br><strong class="Info-Pane-Titles">Do I have a healthy body weight?</strong><br>
+                        <br />
+              <% if ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))) < 18.5 %>             
+                        <span class="Info-Pane-Contents">You are underweight. You have a BMI of <%=  ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))).round(1) %>
+                and a person with a BMI of 18.5 or less is considered to be underweight.</span>          
+              <% end %>                          
+              <% if ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))) < 25 && 
+                  ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))) > 18.5 %>             
+                        <span class="Info-Pane-Contents">You have a healthy body weight. You have a BMI of <%=  ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))).round(1) %>
+                and a person with a BMI of 18.5 to 25.0 is considered to be at a healthy weight. </span>
+              <% end %>
+              <% if ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))) < 30 && 
+                  ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))) > 25 %>             
+                        <span class="Info-Pane-Contents">You are overweight. You have a BMI of <%=  ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))).round(1) %>
+                and a person with a BMI of 25.0 to 30.0 is considered to be overweight.</span>          
+              <% end %>
+              <% if ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))) < 35 && 
+                  ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))) > 30 %>             
+                        <span class="Info-Pane-Contents">You are obese. You have a BMI of <%=  ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))).round(1) %>
+                and a person with a BMI of 30.0 to 35.0 is considered to be obese.</span>          
+              <% end %>    
+              <% if ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))) < 40 && 
+                  ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))) > 35 %>             
+                        <span class="Info-Pane-Contents">You are severely obese. You have a BMI of <%=  ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))).round(1) %>
+                and a person with a BMI of 35.0 to 40.0 is considered to be severely obese.</span>          
+              <% end %> 
+              <% if ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))) > 40 %>             
+                        <span class="Info-Pane-Contents">You are morbidly obese. You have a BMI of <%=  ((params[:weight_lb].to_f * 703) / ((params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f))).round(1) %>
+                and a person with a BMI of 40 or above is considered to be morbidly obese. This can increase a person's risk of death from any cause by 50% to 150%.</span>          
+              <% end %>  
   </div>
   
 
@@ -2306,11 +2364,11 @@ return false;
           </ul>              
           <ul>
             <%= label_tag :age %>
-            <%= number_field_tag(:age, 18, :in => 18...66) %> (18 - 65)
+            <%= number_field_tag(:age, nil, :in => 18...66) %> (18 - 65)
           </ul>           
           <ul>
             <%= label_tag :weight %>
-            <%= number_field_tag(:weight_lb, 75, :in => 75...351)+ "lb"  %> (75 - 350)
+            <%= number_field_tag(:weight_lb, nil, :in => 75...351)+ "lb"  %> (75 - 350)
           </ul>
           <ul>
             <%= label_tag :height %>
@@ -2318,7 +2376,7 @@ return false;
           </ul>
           <ul>
             <%= label_tag :activity_level %>
-              <a HREF="/popup.html" onClick="return popup(this, 'notes')"><%= image_tag "help.png", :size => "15x15" %></a>
+              <a HREF="/popup.html" onClick="return popup(this, 'notes')"><%= image_tag "popup_icon.gif", :size => "15x15" %></a>
             <%= select_tag(:activity_level,
             options_for_select(Bmi::ACTIVITY_LEVEL), :include_blank => false) %>
           </ul>                  

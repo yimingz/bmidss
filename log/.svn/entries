@@ -1,15 +1,15 @@
 10
 
 dir
-213
+223
 https://bmidss.googlecode.com/svn/BmiDss/log
 https://bmidss.googlecode.com/svn
 
 
 
-2011-10-28T08:45:47.869230Z
-98
-alkaabi.ws@gmail.com
+2011-12-07T00:48:10.185612Z
+220
+laughwithm3@gmail.com
 has-props
 
 svn:special svn:externals svn:needs-lock
@@ -33,25 +33,39 @@ svn:special svn:externals svn:needs-lock
 
 
 
-((conflict development.log file update edited deleted (version https://bmidss.googlecode.com/svn 2 51 BmiDss/log/development.log 0 ) (version https://bmidss.googlecode.com/svn 2 53 BmiDss/log/development.log file)))
+()
 
-development.log
+test.log
 file
-56
-
-
-delete
-
-f4bfe0dd7841433441c08b3bcc77f1bd
-2011-10-05T13:19:06.870313Z
-53
-wonkukim@gmail.com
 
 
 
 
+2011-12-06T05:03:09.000000Z
+7651fbd3f2e7e8df1a71f8498fcc9f10
+2011-12-06T20:11:04.755692Z
+216
+laughwithm3@gmail.com
+has-props
 
-development.log.r50
-development.log.r51
-development.log.mine
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+15037
 

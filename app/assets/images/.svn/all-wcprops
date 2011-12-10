@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 42
-/svn/!svn/ver/211/BmiDss/app/assets/images
+/svn/!svn/ver/219/BmiDss/app/assets/images
 END
 Greenbar_Right.jpg
 K 25
@@ -26,6 +26,12 @@ K 25
 svn:wc:ra_dav:version-url
 V 52
 /svn/!svn/ver/98/BmiDss/app/assets/images/spacer.gif
+END
+popup_icon.gif
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/219/BmiDss/app/assets/images/popup_icon.gif
 END
 left_wing-06.jpg
 K 25

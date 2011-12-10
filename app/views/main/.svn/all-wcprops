@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 39
-/svn/!svn/ver/211/BmiDss/app/views/main
+/svn/!svn/ver/223/BmiDss/app/views/main
 END
 index.html_With_Metric.erb
 K 25
@@ -13,5 +13,5 @@ index.html.erb
 K 25
 svn:wc:ra_dav:version-url
 V 54
-/svn/!svn/ver/211/BmiDss/app/views/main/index.html.erb
+/svn/!svn/ver/223/BmiDss/app/views/main/index.html.erb
 END

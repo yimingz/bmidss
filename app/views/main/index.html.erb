@@ -55,11 +55,11 @@ return false;
                   </ul>              
                   <ul>
                   <%= label_tag :age %>
-                  <%= number_field_tag(:age, 18, :in => 18...66) %> (18 - 65)
+                  <%= number_field_tag(:age, nil, :in => 18...66) %> (18 - 65)
                   </ul>           
                   <ul>
                   <%= label_tag :weight %>
-                  <%= number_field_tag(:weight_lb, 75, :in => 75...351)+ "lb"  %> (75 - 350)
+                  <%= number_field_tag(:weight_lb, nil, :in => 75...351)+ "lb"  %> (75 - 350)
                   </ul>
                   <ul>
                   <%= label_tag :height %>
@@ -67,7 +67,7 @@ return false;
                   </ul>
                   <ul>
                   <%= label_tag :activity_level %>
-                    <a HREF="popup.erb" onClick=" return popup(this, 'notes')"><%= image_tag "help.png", :size => "15x15" %></a>
+                    <a HREF="popup.erb" onClick=" return popup(this, 'notes')"><%= image_tag "popup_icon.gif", :size => "15x15" %></a>
                   <%= select_tag(:activity_level,
                   options_for_select(Bmi::ACTIVITY_LEVEL), :include_blank => false) %>
                   </ul>                   

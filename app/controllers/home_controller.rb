@@ -2,8 +2,7 @@ class HomeController < ApplicationController
   
   def index
 
-    #require 'sqlite3'
-    require 'pg'
+    require 'sqlite3'
     
     validateWeight = params[:weight_lb].to_i 
     validateAge = params[:age].to_i
@@ -32,14 +31,10 @@ class HomeController < ApplicationController
     raceString = params[:race]
     gender = genderString[0]
     race = raceString[0]
-    #db = SQLite3::Database.new( "db/patrick.sqlite3" )
-    db = PGconn.connect("localhost", 5432, '','', 'bmidss', 'postgres', "dragon")
-    
-    #gray = db.get_first_row("select * from FullDataWeights where Gender='" + (gender) + "' and Age=" + params[:age].to_s + " and Race='" + (race) + "' and Year='" + params[:year].to_s + "' ")
-    gray = 0 
-    db.exec("select * from FullDataWeights where Gender='" + (gender) + "' and Age=" + params[:age].to_s + " and Race='" + (race) + "' and Year='" + params[:year].to_s + "' ") do |row|
-      gray = row;
-     end
+    db = SQLite3::Database.new( "db/patrick.sqlite3" )
+    gray = db.get_first_row("select * from FullDataWeights where Gender='" + (gender) + "' and Age=" + params[:age].to_s + " and Race='" + (race) + "' and Year='" + params[:year].to_s + "' ")
+  
+
     
     if params[:weight_kg].nil? 
       underweight = ((18.5 * (params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f)) / 703).round(0)    
@@ -92,7 +87,7 @@ class HomeController < ApplicationController
     result = []
     yours = []
 
-    db.exec( "select * from BasisGraphs where Height=" + height.to_s) do |row|
+    db.execute( "select * from BasisGraphs where Height=" + height.to_s) do |row|
       current = []
       curYours = []
       underCur = []
@@ -103,7 +98,7 @@ class HomeController < ApplicationController
       morbidCur = []
       current << (count+75)
       curYours << (count+75)
-      row.at(0)
+
 
       if(Integer(params[:weight_lb]) != count+75)
         curYours << 0
@@ -214,7 +209,7 @@ class HomeController < ApplicationController
       bmiResult = []
       yourBMI = []
       
-      row = db.exec( "select * from BMIbasis") do |row|
+      row = db.execute( "select * from BMIbasis") do |row|
         count = count+1
         currentBMI = []
         yourCurBMI = []
@@ -340,7 +335,7 @@ class HomeController < ApplicationController
     severeCur = []
     morbidCur = []
 
-    db.exec( "select * from BasisGraphs where Height=" + height.to_s) do |row|
+    db.execute( "select * from BasisGraphs where Height=" + height.to_s) do |row|
       current = []
       curYours = []
       current << (count+75)
@@ -452,7 +447,7 @@ class HomeController < ApplicationController
       
 
       
-      row = db.exec( "select * from BMIbasis") do |row|
+      row = db.execute( "select * from BMIbasis") do |row|
       currentBMI = []
       yourCurBMI = []
       
@@ -571,7 +566,7 @@ f.series(:name=>'Weights Distribution', :color=>'#F5F5F5', :type=>'area', :data=
        f.series(:name=>'Obese', :color=>'#d64624',:type=>'area', :data=> obeseArray )
        f.series(:name=>'Severely obese', :color=>'#d62424',:type=>'area', :data=> severeArray )
        f.series(:name=>'Morbidly obese', :color=>'#000000',:type=>'area', :data=> morbidArray )
-       f.series(:name=>'Your Weight', :color=>'#D64524',:type=>'column', :data=> yours )
+       f.series(:name=>'Your Weight', :color=>'#4c8ed3',:type=>'column', :data=> yours )
        
 #       f.series(:name=>'Weights Distribution', :color=>'#F5F5F5', :type=>'area', :data=>result)
 #       f.series(:name=>'Underweight', :color=>'#56a1ef',:type=>'area', :data=> underArray )
@@ -588,7 +583,7 @@ f.series(:name=>'Weights Distribution', :color=>'#F5F5F5', :type=>'area', :data=
           f.options[:legend][:layout] = "horizontal"
           f.options[:title][:text] = 'People with your Gender, Age, Race, and Height in ' + params[:year].to_s;
 
-          f.plotOptions(:series=>{:stickyTracking=>true,:animation=>{:duration=>4000,:easing=>'swing'}},
+          f.plotOptions(:series=>{:stickyTracking=>true,  :animation=>{:duration=>4000,:easing=>'swing'}},
             :area=>{:marker=>{:enabled=>false}},:column=>{:groupPadding=>0,:borderWidth=>0, :marker=>{:lineWidth=>5}})
           f.exporting(:buttons=>{:enabled=>true, :exportButton=>{:enabled=>true}})
           f.navigation(:buttonOptions=>{:align=>'center',:hoverSymbolStroke=>'blue',:enabled=>true})
@@ -605,7 +600,7 @@ f.series(:name=>'Weights Distribution', :color=>'#F5F5F5', :type=>'area', :data=
           f.series(:name=>'Obese', :color=>'#d64624',:type=>'area', :data=> obeseBMIArray )
           f.series(:name=>'Severely obese', :color=>'#d62424',:type=>'area', :data=> severeBMIArray )
           f.series(:name=>'Morbidly obese', :color=>'#000000',:type=>'area', :data=> morbidBMIArray )
-          f.series(:name=>'Your Body Mass Index (BMI)', :color=>'#D64524', :type=>'column', :data=> yourBMI )
+          f.series(:name=>'Your Body Mass Index (BMI)', :color=>'#4c8ed3', :type=>'column', :data=> yourBMI )
            
 
           f.options[:chart][:width] = '1080'  
