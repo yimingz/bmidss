@@ -2183,6 +2183,7 @@ return false;
 
       <body style="font-family: Arial;border: 0 none;">
         <div>
+    <!-- BMI Chart insert and tooltip display configuration -->
 
           <%= high_chart("my_id2", @h2) do |c| %>
             <%= "options.tooltip.formatter = function() { return 'There are ' + this.y +' people in this peer group that are ' +this.x+' lbs; '+Math.round(moreThanMeBMI[(this.x-10)*2]/totalBMITotal*100)+ '% of this peer group are heavier, ' +Math.round(lessThanMeBMI[(this.x-10)*2]/totalBMITotal*100)+ '% in this peer group are lighter.';}" %>	

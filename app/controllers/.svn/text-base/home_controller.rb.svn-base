@@ -41,7 +41,7 @@ class HomeController < ApplicationController
     gray = db.get_first_row("select * from FullDataWeights where Gender='" + (gender) + "' and Age=" + params[:age].to_s + " and Race='" + (race) + "' and Year='" + params[:year].to_s + "' ")
   
 
- #Param conversions for database usage.   
+ #Param conversions for database usage.  
     if params[:weight_kg].nil? 
       underweight = ((18.5 * (params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f)) / 703).round(0)    
       normal = ((25 * (params[:height_feet].to_f*12 +params[:height_inch].to_f) * (params[:height_feet].to_f*12 +params[:height_inch].to_f)) / 703).round(0)
@@ -563,9 +563,10 @@ class HomeController < ApplicationController
       bmiResult << currentBMI
       end
 end
-#  Weight Chart
+# Lazy_High_Chart settings, the gem converts these controller codes to JS and insert it in to the view
+#  Weight Distribution chart configuration
     @h = LazyHighCharts::HighChart.new('graph') do |f|
-#New Colors
+#New Colors, serie settings
 f.series(:name=>'Weights Distribution', :color=>'#F5F5F5', :type=>'area', :data=>result)
        f.series(:name=>'Underweight', :color=>'#d4d624',:type=>'area', :data=> underArray )
        f.series(:name=>'Normal', :color=>'#9dd624',:type=>'area', :data=> normalArray )
@@ -585,7 +586,7 @@ f.series(:name=>'Weights Distribution', :color=>'#F5F5F5', :type=>'area', :data=
 #       f.series(:name=>'Morbidly obese', :color=>'#1f3a56',:type=>'area', :data=> morbidArray )
 #       f.series(:name=>'Your Weight', :color=>'#D64524',:type=>'column', :data=> yours )
        
-        #Graph options
+        #Graph options, use highchart API as reference
           f.options[:chart][:width] = '1080'  
           f.options[:chart][:inverted] = false
           f.options[:tooltip][:enabled] = true
@@ -600,7 +601,7 @@ f.series(:name=>'Weights Distribution', :color=>'#F5F5F5', :type=>'area', :data=
           f.xAxis(:title=>{:text=>'Weight'})
           f.tooltip(:crosshairs=>[{:color=>'green'},{:color=>'green'}])
     end
-#    BMI companion table
+#    BMI Distribution chart configuration 
         @h2 = LazyHighCharts::HighChart.new('graph') do |f| 
           f.series(:name=>'BMIs Distribution', :type=>'area', :color=>'#F5F5F5', :data=>bmiResult)
           f.series(:name=>'Underweight', :color=>'#d4d624',:type=>'area', :data=> underBMIArray )
